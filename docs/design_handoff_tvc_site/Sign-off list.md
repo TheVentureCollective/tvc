@@ -4,7 +4,7 @@ Everything on the site that did not come from TVC's brief or the previous site d
 
 Status key: `[ ]` open · `[x]` approved · `[~]` changed (note what)
 
-Last updated: 30 Sep 2026. "Site: done 30 Sep" means Cat approved it but the site still needs the change.
+Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site still needs the change. "Site: done" means the change is in the built site.
 
 ---
 
