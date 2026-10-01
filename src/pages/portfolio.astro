@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.js";
+import { initials, logoBox, logoSrc, delay, SHORT_SECTOR } from "../lib/util.js";
+
+const filters = ["All", ...site.sectors];
+const total = site.companies.length;
+---
+<Base
+  page="portfolio"
+  title="Portfolio | The Venture Collective"
+  description="The Venture Collective portfolio: nuclear reactors, space stations, longevity and more, across industrial, energy, healthcare and aerospace."
+>
+  <section class="wrap hero tight">
+    <div class="eyebrow">Portfolio</div>
+    <h1 class="h1" style="max-width:1200px">Nuclear reactors. Space stations. Longevity<span class="dot">.</span></h1>
+    <div class="split" style="margin-top:48px">
+      <div></div>
+      <p class="lead hero-lead">Founders building purpose-driven businesses in industries that were supposed to be impossible to move — alongside world-class co-investors.</p>
+    </div>
+  </section>
+
+  <div class="filter-bar">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filter by sector">
+        {filters.map((s, i) => (
+          <button type="button" data-sector={s} aria-pressed={i === 0 ? "true" : "false"}>
+            <span class="long">{s}</span><span class="short">{SHORT_SECTOR[s] || s}</span>
+          </button>
+        ))}
+      </div>
+      <div class="count" aria-live="polite">{total} companies</div>
+    </div>
+  </div>
+
+  <section class="wrap portfolio-grid">
+    <div class="cols3 gutters">
+      {site.companies.map((c, i) => (
+        <a class="card big" href={c.url} target="_blank" rel="noopener" data-sector={c.sector} data-reveal data-delay={delay(i, 3, 80)}>
+          <div class="card-top">
+            {c.logo
+              ? <img src={logoSrc(c.logo)} alt={c.name} loading="lazy" style={logoBox(c.ratio, 3800, 180, 58)} />
+              : <div class="monogram-sq">{initials(c.name)}</div>}
+            {c.tag && <span class="tag">{c.tag}</span>}
+          </div>
+          <div class="card-name">{c.name}</div>
+          <p>{c.desc}</p>
+          <div class="card-foot"><span>{c.sector}</span><span class="visit">Visit ↗</span></div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<script>
+  const buttons = [...document.querySelectorAll(".filters button")];
+  const cards = [...document.querySelectorAll(".portfolio-grid .card")];
+  const count = document.querySelector(".count");
+
+  buttons.forEach((b) => b.addEventListener("click", () => {
+    const sector = b.dataset.sector;
+    buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    let n = 0;
+    cards.forEach((c) => {
+      const show = sector === "All" || c.dataset.sector === sector;
+      c.hidden = !show;
+      if (show) { n++; c.style.opacity = "1"; c.style.transform = "none"; }
+    });
+    count.textContent = n + (n === 1 ? " company" : " companies");
+  }));
+</script>

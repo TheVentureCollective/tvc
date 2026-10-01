@@ -1,0 +1,95 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.js";
+import { logoBox, logoSrc, delay } from "../lib/util.js";
+---
+<Base
+  page="approach"
+  title="Approach | The Venture Collective"
+  description="How The Venture Collective invests: early, selective, milestone-driven, with a support plan built for each company."
+>
+  <section class="wrap hero">
+    <div class="eyebrow">Our approach</div>
+    <h1 class="h1" style="max-width:1100px">Being early is the easy part<span class="dot">.</span></h1>
+    <div class="split" style="margin-top:48px">
+      <div></div>
+      <p class="lead hero-lead">Legacy industries don't get transformed by capital alone. They get transformed by visionaries with unfair conviction, and investors willing to be early, specific, and patient in the right places.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      {site.principles.map((pr) => (
+        <div class="big-principle" data-reveal>
+          <div class="head">
+            <div class="eyebrow">{pr.num}</div>
+            <h2>{pr.longTitle || pr.title}</h2>
+          </div>
+          <div>
+            <p>{pr.body}</p>
+            <div class="proof">{pr.proof}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section data-reveal>
+    <div class="wrap" style="padding-top:var(--pad-y);padding-bottom:var(--pad-y)">
+      <div class="split end">
+        <h2 class="h2 flush">What we actually do<span class="dot">.</span></h2>
+        <p class="lead">The gap between a first check and a real company is four problems wide. We work all four with you.</p>
+      </div>
+      <div class="cols4 gutters mt56">
+        {site.supports.map((s, i) => (
+          <div class="support" data-reveal data-delay={delay(i)}>
+            <div class="eyebrow">{s.num}</div>
+            <div class="support-title">{s.title}</div>
+            <p>{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">From our founders</div>
+      <div class="cols3 quotes">
+        {site.quotes.map((q, i) => (
+          <figure class="quote" data-reveal data-delay={delay(i, 3)}>
+            <div class="quote-head">
+              <div class="avatar">{q.photo && <img src={q.photo} alt={q.name} loading="lazy" />}</div>
+              <img src={logoSrc(q.logo)} alt="" style={`${logoBox(q.ratio, 1800, 120, 40)};opacity:0.9`} />
+            </div>
+            <blockquote>“{q.quote}”</blockquote>
+            <figcaption><strong style="font-weight:600">{q.name}</strong> <span class="muted">· {q.role}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="split end">
+        <h2 class="h2 flush">From intro to term sheet<span class="dot">.</span></h2>
+        <p class="lead">We tell founders where they stand at every step. No ghosting, no fake process, no diligence theatre.</p>
+      </div>
+      <div class="cols4 steps">
+        {site.steps.map((st, i) => (
+          <div class="step" data-reveal data-delay={delay(i, 4, 120)}>
+            <div class="step-rule"></div>
+            <div class="eyebrow">{st.when}</div>
+            <div class="step-title">{st.title}</div>
+            <p>{st.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="btns" style="margin-top:64px">
+        <a href="/contact" class="btn btn-fill">Pitch us</a>
+        <a href="/portfolio" class="btn btn-outline">See who we've backed</a>
+      </div>
+    </div>
+  </section>
+</Base>

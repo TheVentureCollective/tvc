@@ -1,0 +1,352 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import site from "../data/site.js";
+import { initials, logoBox, logoSrc, delay } from "../lib/util.js";
+
+const logos = site.companies.filter((c) => c.logo);
+const featured = site.companies.filter((c) => c.featured).sort((a, b) => a.featured - b.featured);
+const teamUrl = (m) =>
+  m.url || "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(m.name + " The Venture Collective");
+---
+<Base
+  page="home"
+  title="The Venture Collective | Early-stage venture, pre-seed to Series A"
+  description="An early-stage venture firm backing founders transforming legacy industries: industrial, energy and AI infrastructure, healthcare and applied bio, aerospace and defense."
+>
+  <section class="wrap hero">
+    <div class="eyebrow">Early-stage venture · Pre-seed to Series A</div>
+    <h1 class="h1 home-h1">
+      <span class="hero-line">Backing founders</span>
+      <span class="hero-line">transforming <em class="hero-word" data-words={JSON.stringify(site.heroWords)}>{site.heroWords[0]}</em></span>
+      <span class="hero-line">industries<span class="dot">.</span></span>
+    </h1>
+    <div class="split hero-actions">
+      <div></div>
+      <div>
+        <p class="lead hero-lead">We invest our capital, time, and network into highly defensible, fast-growing companies with the potential to solve the world's biggest problems.</p>
+        <div class="btns">
+          <a href="/portfolio" class="btn btn-fill">Meet the portfolio</a>
+          <a href="/contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      {[...logos, ...logos].map((c, i) => (
+        <a href={c.url} target="_blank" rel="noopener" title={c.name} aria-hidden={i >= logos.length ? "true" : undefined} tabindex={i >= logos.length ? "-1" : undefined}>
+          <img src={logoSrc(c.logo)} alt={c.name} style={logoBox(c.ratio, 2200, 150, 44)} />
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <section class="section" data-reveal>
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow">01 — Who we are</div>
+        <h2 class="h2">We fund what the world can't do without<span class="dot">.</span></h2>
+      </div>
+      <div>
+        <p class="lead">A conviction-led, early-stage venture firm backed by world-class entrepreneurs and business leaders. We back the hard, physical shifts the legacy economy needs, long before they're mainstream.</p>
+        <div class="rows">
+          {site.points.map((p, i) => (
+            <div class="row" data-reveal data-delay={delay(i, 1, 120)}>
+              <div class="row-label">{p.label}</div>
+              <div class="row-body">{p.body}</div>
+            </div>
+          ))}
+        </div>
+        <div class="sources" style="border-top:1px solid var(--line-2)">
+          <div class="label">Sources</div>
+          <div>{site.pointsSources}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="split end">
+        <div>
+          <div class="eyebrow">02 — Market</div>
+          <h2 class="h2">The market is moving our way<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">Liquidity has returned in exactly the categories we concentrate in — and the bulk of the opportunity is still ahead of us.</p>
+      </div>
+      <div class="cols4 stats">
+        {site.stats.map((s, i) => (
+          <div class="stat" data-reveal data-delay={delay(i)}>
+            <div class="stat-num" data-count={s.value}>{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="sources">
+        <div class="label">Sources</div>
+        <div>{site.statsSources}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="invest">
+    <div class="wrap">
+      <div class="invest-sticky">
+        <div class="invest-aside">
+          <div class="eyebrow">03 — Where we invest</div>
+          <h2 class="h2">Four legacy industries, rebuilt<span class="dot">.</span></h2>
+          <p class="lead">Four legacy industries being rebuilt — each measured in trillions, each reshaped by AI moving into the physical world, each with demand that survives a downturn.</p>
+          <div class="invest-index">
+            {site.industries.map((ind, i) => (
+              <button type="button" data-jump={i} class={i === 0 ? "active" : undefined}>
+                <span class="num">{ind.num}</span>
+                <span class="title">{ind.title}</span>
+                <span class="mark"></span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div>
+          {site.industries.map((ind, i) => (
+            <div class:list={["panel", { active: i === 0 }]} data-panel={i}>
+              <div class="panel-head">
+                <div class="eyebrow">{ind.num}</div>
+                <Icon name={ind.icon} size={28} />
+              </div>
+              <h3>{ind.title}</h3>
+              <p>{ind.body}</p>
+              <div class="label">Portfolio snapshot</div>
+              <div class="chips">{ind.companies.map((co) => <span class="chip">{co}</span>)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="invest-accordion">
+        <div class="split end">
+          <div>
+            <div class="eyebrow">03 — Where we invest</div>
+            <h2 class="h2">Four legacy industries, rebuilt<span class="dot">.</span></h2>
+          </div>
+          <p class="lead">Four legacy industries being rebuilt — each measured in trillions, each reshaped by AI moving into the physical world, each with demand that survives a downturn.</p>
+        </div>
+        <div class="acc-list">
+          {site.industries.map((ind, i) => (
+            <div class:list={["acc", { open: i === 0 }]}>
+              <button type="button" class="acc-head" aria-expanded={i === 0 ? "true" : "false"}>
+                <span class="num">{ind.num}</span>
+                <span class="icon"><Icon name={ind.icon} size={22} /></span>
+                <span class="title">{ind.title}</span>
+                <span class="tag">Active</span>
+              </button>
+              <div class="acc-body">
+                <div>
+                  <div class="acc-inner">
+                    <p>{ind.body}</p>
+                    <div>
+                      <div class="label">Portfolio snapshot</div>
+                      <div class="chips">{ind.companies.map((co) => <span class="chip">{co}</span>)}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow">04 — Approach</div>
+        <h2 class="h2">Four commitments that decide how we work<span class="dot">.</span></h2>
+        <p class="lead" style="margin-top:24px;max-width:460px">Four commitments that decide what we invest in, what we pay, and what founders get from us afterward.</p>
+        <a href="/approach" class="text-link" style="margin-top:24px">Read the full approach ↗</a>
+      </div>
+      <div class="principle-list">
+        {site.principles.map((pr, i) => (
+          <div class="principle" data-reveal data-delay={delay(i, 1, 110)}>
+            <div class="eyebrow">{pr.num}</div>
+            <div>
+              <div class="principle-title">{pr.title}</div>
+              <p>{pr.short}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="split end">
+        <div>
+          <div class="eyebrow">05 — Portfolio snapshot</div>
+          <h2 class="h2">Our Portfolio<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">A track record of backing founders building purpose-driven businesses alongside world-class investors.</p>
+      </div>
+      <div class="cols4 gutters mt56">
+        {featured.map((c, i) => {
+          const tag = c.homeTag || c.tag;
+          return (
+            <a class="card" href={c.url} target="_blank" rel="noopener" data-reveal data-delay={delay(i)}>
+              <div class="card-top">
+                <img src={logoSrc(c.logo)} alt={c.name} style={logoBox(c.ratio, 3400, 160, 52)} />
+                {tag && <span class="tag">{tag}</span>}
+              </div>
+              <div class="card-name">{c.name}</div>
+              <p>{c.short || c.desc}</p>
+              <div class="card-foot"><span>{c.sector}</span><span class="arrow">↗</span></div>
+            </a>
+          );
+        })}
+      </div>
+      <a href="/portfolio" class="text-link" style="margin-top:32px">View all companies ↗</a>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">06 — Team</div>
+      <h2 class="h2">Our Team<span class="dot">.</span></h2>
+      <div class="cols4 team">
+        {site.team.map((m, i) => (
+          <div data-reveal data-delay={delay(i)}>
+            <div class="photo">
+              {m.photo
+                ? <img src={`/assets/team/${m.photo}`} alt={m.name} loading="lazy" />
+                : <div class="ring">{initials(m.name)}</div>}
+            </div>
+            <div class="member-name">{m.name}</div>
+            <div class="label member-role">{m.role}</div>
+            <div class="member-bio">{m.bio.map((line) => <div>{line}</div>)}</div>
+            <a class="member-link" href={teamUrl(m)} target="_blank" rel="noopener">{m.linkLabel || "LinkedIn"} <span class="dot">↗</span></a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="split end">
+        <div>
+          <div class="eyebrow">07 — Venture partners</div>
+          <h2 class="h2">Venture Partners<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">A global network of founders, operators, and investors who expand our ability to source and support.</p>
+      </div>
+      <div class="cols3 partners">
+        {site.partners.map((vp, i) => (
+          <a class="partner" href={vp.url} target="_blank" rel="noopener" data-reveal data-delay={delay(i, 3)}>
+            <div class="circle">{initials(vp.name)}</div>
+            <div>
+              <div class="partner-name">{vp.name}</div>
+              <div class="partner-bio">{vp.bio}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">08 — News</div>
+      <h2 class="h2">In case you missed it<span class="dot">.</span></h2>
+      <div class="cols3 news">
+        {site.homeNews.map((n, i) => (
+          <div class="news-card" data-reveal data-delay={delay(i, 3)}>
+            <div class:list={["news-img", { contain: n.fit === "contain" }]} style={n.bg ? `background:${n.bg}` : undefined}>
+              <img src={n.img} alt="" loading="lazy" />
+            </div>
+            <a href={n.url} target="_blank" rel="noopener" style="display:block">
+              <div class="eyebrow">{n.source}</div>
+              <div class="news-title">{n.title}</div>
+              <p>{n.body}</p>
+            </a>
+          </div>
+        ))}
+      </div>
+      <a href="/icymi" class="text-link" style="margin-top:40px">View all updates ↗</a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Hero word swap
+  const word = document.querySelector(".hero-word");
+  const words = JSON.parse(word.dataset.words);
+  if (!reduced && words.length > 1) {
+    let i = 0;
+    setInterval(() => {
+      word.classList.add("leaving");
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        word.textContent = words[i];
+        word.classList.replace("leaving", "entering");
+        setTimeout(() => word.classList.remove("entering"), 40);
+      }, 380);
+    }, 2800);
+  }
+
+  // Stat count-up
+  if (!reduced && "IntersectionObserver" in window) {
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const m = el.dataset.count.match(/^([^0-9]*)([\d.,]+)(.*)$/);
+      if (!m) return;
+      const target = parseFloat(m[2].replace(/,/g, ""));
+      const dec = (m[2].split(".")[1] || "").length;
+      const fmt = (v) => m[1] + v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3];
+      el.textContent = fmt(0);
+      const io = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        const t0 = performance.now();
+        const step = (t) => {
+          const p = Math.min(1, (t - t0) / 1400);
+          el.textContent = fmt(target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, { threshold: 0.4 });
+      io.observe(el);
+    });
+  }
+
+  // Where we invest: sticky panels
+  const panels = [...document.querySelectorAll("[data-panel]")];
+  const jumps = [...document.querySelectorAll("[data-jump]")];
+  const activate = (i) => {
+    panels.forEach((p, j) => p.classList.toggle("active", i === j));
+    jumps.forEach((b, j) => b.classList.toggle("active", i === j));
+  };
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) activate(+e.target.dataset.panel); });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    panels.forEach((p) => io.observe(p));
+  }
+  jumps.forEach((b) => b.addEventListener("click", () => {
+    const el = panels[+b.dataset.jump];
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.14, behavior: reduced ? "auto" : "smooth" });
+  }));
+
+  // Where we invest: accordion
+  const accs = [...document.querySelectorAll(".acc")];
+  const open = (i) => accs.forEach((a, j) => {
+    a.classList.toggle("open", i === j);
+    a.querySelector(".acc-head").setAttribute("aria-expanded", String(i === j));
+  });
+  accs.forEach((a, i) => {
+    a.addEventListener("mouseenter", () => open(i));
+    a.addEventListener("click", () => open(i));
+  });
+</script>

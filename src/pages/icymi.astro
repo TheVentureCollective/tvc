@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.js";
+import { initials } from "../lib/util.js";
+
+const lead = site.lead;
+---
+<Base
+  page="icymi"
+  title="ICYMI | The Venture Collective"
+  description="News from The Venture Collective and its portfolio companies."
+>
+  <section class="wrap hero tight">
+    <div class="eyebrow">In case you missed it</div>
+    <div class="icymi-head">
+      <h1 class="h1">The latest<br>and greatest<span class="dot">.</span></h1>
+      <a href={site.links.medium} target="_blank" rel="noopener" class="text-link">Read us on Medium ↗</a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="lead-story">
+      <div class="lead-img"><img src={lead.img} alt="" /></div>
+      <a class="lead-text" href={lead.url} target="_blank" rel="noopener">
+        <div class="meta"><span class="dot">{lead.source}</span><span class="muted">{lead.date}</span></div>
+        <h2>{lead.title}</h2>
+        <p>{lead.body}</p>
+        <div class="read-more">Read more <span class="dot">↗</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap news-list">
+    <div>
+      {site.news.map((n) => (
+        <a class="news-row" href={n.url} target="_blank" rel="noopener" data-reveal>
+          <div class="src">
+            <div class="mono-sq">{initials(n.source)}</div>
+            <div class="meta-col"><span class="muted">{n.date}</span><br><span class="dot">{n.source}</span></div>
+          </div>
+          <div>
+            <div class="news-row-title">{n.title}</div>
+            <p>{n.body}</p>
+          </div>
+          <div class="arrow" aria-hidden="true">↗</div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
