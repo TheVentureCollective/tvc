@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="content/site-data.js"></script>
+<script src="js/motion.js"></script>
+<script src="image-slot.js"></script>
+<style>
+html,body{margin:0;background:#1B1019;color:#ECECEE;font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#ECECEE;text-decoration:none}
+a:hover{color:#FF8402}
+input::placeholder,textarea::placeholder{color:#6B5E69}
+@keyframes tvcMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#1B1019;color:#ECECEE;font-family:Figtree,system-ui,sans-serif">
+
+<header style="border-bottom:1px solid rgba(236,236,238,0.1)">
+  <nav style="max-width:1320px;margin:0 auto;padding:18px clamp(20px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px">
+    <a href="#home" style="font-size:18px;font-weight:600;letter-spacing:-0.02em;color:#ECECEE">The Venture Collective<span style="color:#FF8402">.</span></a>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px clamp(16px,2vw,28px);font-size:14px;font-weight:500">
+      <a href="#home" style="color:{{ navHome }}">Home</a>
+      <a href="#approach" style="color:{{ navApproach }}">Approach</a>
+      <a href="#portfolio" style="color:{{ navPortfolio }}">Portfolio</a>
+      <a href="#icymi" style="color:{{ navIcymi }}">ICYMI</a>
+      <a href="#contact" style="color:{{ navContact }};border-bottom:1px solid {{ navContactBorder }};padding-bottom:2px">Get in touch</a>
+    </div>
+  </nav>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Home / Hero" style="max-width:1320px;margin:0 auto;padding:clamp(72px,11vw,160px) clamp(20px,4vw,40px) clamp(60px,8vw,96px)">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">Early-stage venture · Pre-seed to Series A</div>
+  <h1 style="margin:28px 0 0;font-size:clamp(46px,7.4vw,108px);line-height:0.98;font-weight:500;letter-spacing:-0.045em;"><span style="display:block;white-space:nowrap">Backing founders</span><span style="display:block;white-space:nowrap">transforming <span style="display:{{ wordDisplay }}"><sc-if value="{{ swapOn }}" hint-placeholder-val="{{ false }}">{{ heroWord }}</sc-if><sc-if value="{{ swapOff }}" hint-placeholder-val="{{ true }}"><em style="font-style:italic;font-weight:400">legacy</em></sc-if></span></span><span style="display:block">industries<span style="color:#FF8402">.</span></span></h1>
+  <div style="margin-top:48px;display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+    <div></div>
+    <div>
+      <p style="margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:560px;text-wrap:pretty">We invest our capital, time, and network into highly defensible, fast-growing companies with the potential to solve the world's biggest problems.</p>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#portfolio" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;background:#ECECEE;color:#1B1019;font-size:15px;font-weight:600;transition:background .2s" style-hover="background:#FF8402;color:#1B1019">Meet the portfolio</a>
+        <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border:1px solid rgba(236,236,238,0.4);color:#ECECEE;font-size:15px;font-weight:600;transition:border-color .2s" style-hover="border-color:#ECECEE;color:#ECECEE">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ marqueeOn }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Home / Logo marquee" style="border-top:1px solid rgba(236,236,238,0.1);padding:36px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+    <div style="display:flex;width:max-content;animation:tvcMarquee 140s linear infinite" style-hover="animation-play-state:paused">
+      <sc-for list="{{ marqueeLogos }}" as="ml" hint-placeholder-count="12">
+        <a href="{{ ml.url }}" target="_blank" rel="noopener" title="{{ ml.name }}" style="flex:none;display:flex;align-items:center;justify-content:center;padding:0 clamp(24px,3vw,44px);height:56px;opacity:0.7;transition:opacity .45s" style-hover="opacity:1">
+          <img src="{{ ml.src }}" alt="{{ ml.name }}" style="width:{{ ml.lw }};height:{{ ml.lh }};display:block">
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+
+<section data-screen-label="Home / 01 Who we are" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px);display:grid;grid-template-columns:{{ g.split }};gap:28px 64px">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">01 — Who we are</div>
+      <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">We fund what the world can't do without<span style="color:#FF8402">.</span></h2>
+    </div>
+    <div>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">A conviction-led, early-stage venture firm backed by world-class entrepreneurs and business leaders. We back the hard, physical shifts the legacy economy needs, long before they're mainstream.</p>
+      <div style="margin-top:40px;display:grid">
+        <sc-for list="{{ points }}" as="p" hint-placeholder-count="3">
+          <div data-reveal="1" data-delay="{{ p.delay }}" style="display:grid;grid-template-columns:{{ g.label }};gap:8px 32px;padding:24px 0;border-top:1px solid rgba(236,236,238,0.12)">
+            <div style="font-size:16px;font-weight:600;line-height:1.45">{{ p.label }}</div>
+            <div style="font-size:15px;line-height:1.6;color:#9B8D98;text-wrap:pretty">{{ p.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding-top:16px;border-top:1px solid rgba(236,236,238,0.12)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402;line-height:18px">Sources</div>
+        <div style="font-size:12px;line-height:18px;color:#9B8D98;text-wrap:pretty">{{ pointsSources }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Home / 02 Market" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">02 — Market</div>
+        <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">The market is moving our way<span style="color:#FF8402">.</span></h2>
+      </div>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">Liquidity has returned in exactly the categories we concentrate in — and the bulk of the opportunity is still ahead of us.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:{{ g.cols4 }};border-top:1px solid rgba(236,236,238,0.2)">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div data-reveal="1" data-delay="{{ s.delay }}" style="padding:28px 28px 32px 0;border-bottom:1px solid rgba(236,236,238,0.12)">
+          <div style="font-size:clamp(44px,4.6vw,68px);line-height:1;font-weight:500;letter-spacing:-0.045em;font-variant-numeric:tabular-nums">{{ s.node }}</div>
+          <div style="margin-top:16px;font-size:14px;line-height:1.55;color:#9B8D98;max-width:260px;text-wrap:pretty">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding-top:16px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402;line-height:18px">Sources</div>
+      <div style="font-size:12px;line-height:18px;color:#9B8D98;text-wrap:pretty">{{ statsSources }}</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Home / 03 Where we invest" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <sc-if value="{{ stickyInvest }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start">
+        <div style="position:sticky;top:48px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">03 — Where we invest</div>
+          <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">Four legacy industries, rebuilt<span style="color:#FF8402">.</span></h2>
+          <p style="margin:24px 0 0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;max-width:460px;text-wrap:pretty">Four legacy industries being rebuilt — each measured in trillions, each reshaped by AI moving into the physical world, each with demand that survives a downturn.</p>
+          <div style="margin-top:40px;border-top:1px solid rgba(236,236,238,0.2)">
+            <sc-for list="{{ industries }}" as="ind" hint-placeholder-count="4">
+              <button type="button" onClick="{{ ind.onJump }}" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:12px;padding:14px 0;border:0;border-bottom:1px solid rgba(236,236,238,0.12);background:transparent;text-align:left;cursor:pointer;font-family:Figtree,sans-serif">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:{{ ind.numColor }};transition:color .45s">{{ ind.num }}</span>
+                <span style="font-size:15px;font-weight:500;color:{{ ind.titleColor }};transition:color .45s">{{ ind.title }}</span>
+                <span style="height:2px;background:#FF8402;opacity:{{ ind.markOpacity }};transition:opacity .45s"></span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <sc-for list="{{ industries }}" as="ind" hint-placeholder-count="4">
+            <div data-invest-panel="{{ ind.idx }}" style="min-height:72vh;display:flex;flex-direction:column;justify-content:center;padding:48px 40px;border-top:1px solid rgba(236,236,238,0.12);background:{{ ind.bg }};opacity:{{ ind.panelOpacity }};transition:opacity .45s,background .45s">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8402">{{ ind.num }}</div>
+                <div style="color:#ECECEE;display:flex">
+                  <sc-if value="{{ ind.isFactory }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg></sc-if>
+                  <sc-if value="{{ ind.isServer }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"></rect><rect width="20" height="8" x="2" y="14" rx="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg></sc-if>
+                  <sc-if value="{{ ind.isDna }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m10 16 1.5 1.5"></path><path d="m14 8-1.5-1.5"></path><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path><path d="m16.5 10.5 1 1"></path><path d="m17 6-2.891-2.891"></path><path d="M2 15c6.667-6 13.333 0 20-6"></path><path d="m20 9 .891.891"></path><path d="M3.109 14.109 4 15"></path><path d="m6.5 12.5 1 1"></path><path d="m7 18 2.891 2.891"></path><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path></svg></sc-if>
+                  <sc-if value="{{ ind.isShield }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.810 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></sc-if>
+                </div>
+              </div>
+              <h3 style="margin:40px 0 0;font-size:clamp(28px,3vw,42px);line-height:1.1;font-weight:500;letter-spacing:-0.03em;text-wrap:balance">{{ ind.title }}</h3>
+              <p style="margin:20px 0 0;font-size:17px;line-height:1.6;color:#ECECEE;max-width:560px;text-wrap:pretty">{{ ind.body }}</p>
+              <div style="margin-top:32px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">Portfolio snapshot</div>
+              <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ ind.companies }}" as="co" hint-placeholder-count="3">
+                  <span style="font-size:13px;line-height:1;padding:8px 10px;border:1px solid rgba(236,236,238,0.2);color:#ECECEE">{{ co }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ accordionInvest }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">03 — Where we invest</div>
+          <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">Four legacy industries, rebuilt<span style="color:#FF8402">.</span></h2>
+        </div>
+        <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">Four legacy industries being rebuilt — each measured in trillions, each reshaped by AI moving into the physical world, each with demand that survives a downturn.</p>
+      </div>
+      <div style="margin-top:56px;border-top:1px solid rgba(236,236,238,0.2)">
+        <sc-for list="{{ industries }}" as="ind" hint-placeholder-count="4">
+          <div onMouseEnter="{{ ind.onOpen }}" onClick="{{ ind.onOpen }}" style="background:{{ ind.bg }};border-bottom:1px solid rgba(236,236,238,0.12);cursor:pointer;transition:background .45s">
+            <div style="display:grid;grid-template-columns:{{ ind.headCols }};align-items:center;gap:16px;padding:26px clamp(16px,2vw,28px)">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:{{ ind.numColor }}">{{ ind.num }}</div>
+              <div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:{{ ind.titleColor }};transition:color .45s">
+                <sc-if value="{{ ind.isFactory }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg></sc-if>
+                <sc-if value="{{ ind.isServer }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"></rect><rect width="20" height="8" x="2" y="14" rx="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg></sc-if>
+                <sc-if value="{{ ind.isDna }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m10 16 1.5 1.5"></path><path d="m14 8-1.5-1.5"></path><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path><path d="m16.5 10.5 1 1"></path><path d="m17 6-2.891-2.891"></path><path d="M2 15c6.667-6 13.333 0 20-6"></path><path d="m20 9 .891.891"></path><path d="M3.109 14.109 4 15"></path><path d="m6.5 12.5 1 1"></path><path d="m7 18 2.891 2.891"></path><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path></svg></sc-if>
+                <sc-if value="{{ ind.isShield }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></sc-if>
+              </div>
+              <div style="font-size:clamp(19px,2.2vw,30px);line-height:1.2;font-weight:500;letter-spacing:-0.02em;color:{{ ind.titleColor }};transition:color .45s">{{ ind.title }}</div>
+              <div style="opacity:{{ ind.pillOpacity }};transition:opacity .45s;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;background:#FFB066;color:#1B1019;padding:4px 8px">Active</div>
+            </div>
+            <div style="display:grid;grid-template-rows:{{ ind.rows }};transition:grid-template-rows .45s ease">
+              <div style="overflow:hidden">
+                <div style="display:grid;grid-template-columns:{{ accCols }};gap:24px 64px;padding:0 clamp(16px,2vw,28px) 32px">
+                  <div></div>
+                  <div style="display:grid;grid-template-columns:{{ accInner }};gap:24px 48px">
+                    <p style="margin:0;font-size:16px;line-height:1.6;color:#ECECEE;text-wrap:pretty">{{ ind.body }}</p>
+                    <div>
+                      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">Portfolio snapshot</div>
+                      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+                        <sc-for list="{{ ind.companies }}" as="co" hint-placeholder-count="3">
+                          <span style="font-size:13px;line-height:1;padding:8px 10px;border:1px solid rgba(236,236,238,0.2);color:#ECECEE">{{ co }}</span>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section data-screen-label="Home / 04 Approach" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px);display:grid;grid-template-columns:{{ g.split }};gap:28px 64px">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">04 — Approach</div>
+      <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">Four commitments that decide how we work<span style="color:#FF8402">.</span></h2>
+      <p style="margin:24px 0 0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;max-width:460px;text-wrap:pretty">Four commitments that decide what we invest in, what we pay, and what founders get from us afterward.</p>
+      <a href="#approach" style="margin-top:24px;display:inline-flex;font-size:15px;font-weight:600;color:#ECECEE;border-bottom:1px solid #FF8402;padding-bottom:3px">Read the full approach ↗</a>
+    </div>
+    <div style="border-top:1px solid rgba(236,236,238,0.2)">
+      <sc-for list="{{ principles }}" as="pr" hint-placeholder-count="4">
+        <div data-reveal="1" data-delay="{{ pr.delay }}" style="display:grid;grid-template-columns:{{ g.num }};gap:10px 24px;padding:28px 0;border-bottom:1px solid rgba(236,236,238,0.12)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8402;padding-top:6px">{{ pr.num }}</div>
+          <div>
+            <div style="font-size:clamp(20px,1.9vw,24px);line-height:1.3;font-weight:500;letter-spacing:-0.015em">{{ pr.title }}</div>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#9B8D98;text-wrap:pretty">{{ pr.short }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Home / 05 Portfolio" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">05 — Portfolio snapshot</div>
+        <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em">Our Portfolio<span style="color:#FF8402">.</span></h2>
+      </div>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">A track record of backing founders building purpose-driven businesses alongside world-class investors.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:{{ g.cols4 }};gap:1px;background:rgba(236,236,238,0.12);border:1px solid rgba(236,236,238,0.12)">
+      <sc-for list="{{ companies }}" as="c" hint-placeholder-count="8">
+        <a data-reveal="1" data-delay="{{ c.delay }}" href="{{ c.url }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;min-height:280px;padding:28px;background:#1B1019;color:#ECECEE;transition:background .45s" style-hover="background:#2B1B27;color:#ECECEE">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;height:56px">
+            <img src="{{ c.src }}" alt="{{ c.name }}" style="width:{{ c.lw }};height:{{ c.lh }};opacity:0.92;display:block">
+            <sc-if value="{{ c.hasTag }}" hint-placeholder-val="{{ false }}">
+              <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:#FFB066;color:#1B1019;padding:4px 8px;white-space:nowrap">{{ c.tag }}</span>
+            </sc-if>
+          </div>
+          <div style="margin-top:32px;font-size:20px;font-weight:600;letter-spacing:-0.015em">{{ c.name }}</div>
+          <p style="margin:8px 0 0;font-size:14px;line-height:1.55;color:#9B8D98;text-wrap:pretty">{{ c.desc }}</p>
+          <div style="margin-top:auto;padding-top:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.5;letter-spacing:0.12em;text-transform:uppercase;color:#9B8D98">
+            <span>{{ c.sector }}</span>
+            <span style="font-family:Figtree,sans-serif;font-size:16px;line-height:1;color:#FF8402">↗</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+    <a href="#portfolio" style="margin-top:32px;display:inline-flex;font-size:15px;font-weight:600;color:#ECECEE;border-bottom:1px solid #FF8402;padding-bottom:3px">View all companies ↗</a>
+  </div>
+</section>
+
+<section data-screen-label="Home / 06 Team" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">06 — Team</div>
+    <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em">Our Team<span style="color:#FF8402">.</span></h2>
+    <div style="margin-top:56px;display:grid;grid-template-columns:{{ g.cols4 }};gap:48px 24px">
+      <sc-for list="{{ team }}" as="m" hint-placeholder-count="9">
+        <div data-reveal="1" data-delay="{{ m.delay }}">
+          <div style="aspect-ratio:1;background:#2B1B27;position:relative;overflow:hidden">
+            <sc-if value="{{ m.hasImg }}" hint-placeholder-val="{{ false }}">
+              <img src="{{ m.img }}" alt="{{ m.name }}" style="width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(1) contrast(1.05);display:block;transform:scale(1.04);transform-origin:top center">
+            </sc-if>
+            <sc-if value="{{ m.noImg }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                <div style="width:42%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(236,236,238,0.25);display:flex;align-items:center;justify-content:center;font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:-0.02em;color:#ECECEE">{{ m.initials }}</div>
+              </div>
+            </sc-if>
+          </div>
+          <div style="margin-top:20px;font-size:19px;font-weight:600;letter-spacing:-0.01em">{{ m.name }}</div>
+          <div style="margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">{{ m.role }}</div>
+          <div style="margin-top:14px;display:grid;gap:4px">
+            <sc-for list="{{ m.bio }}" as="line" hint-placeholder-count="3">
+              <div style="font-size:13px;line-height:1.45;color:#9B8D98">{{ line }}</div>
+            </sc-for>
+          </div>
+          <a href="{{ m.url }}" target="_blank" rel="noopener" style="margin-top:14px;display:inline-flex;gap:6px;font-size:13px;font-weight:600;color:#ECECEE">{{ m.linkLabel }} <span style="color:#FF8402">↗</span></a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Home / 07 Venture partners" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">07 — Venture partners</div>
+        <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em">Venture Partners<span style="color:#FF8402">.</span></h2>
+      </div>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">A global network of founders, operators, and investors who expand our ability to source and support.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:{{ g.cols3 }};gap:0 32px;border-top:1px solid rgba(236,236,238,0.2)">
+      <sc-for list="{{ partners }}" as="vp" hint-placeholder-count="9">
+        <a data-reveal="1" data-delay="{{ vp.delay }}" href="{{ vp.url }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid rgba(236,236,238,0.12);color:#ECECEE">
+          <div style="width:48px;height:48px;border-radius:50%;border:1px solid rgba(236,236,238,0.25);background:#2B1B27;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;color:#ECECEE">{{ vp.initials }}</div>
+          <div>
+            <div style="font-size:16px;font-weight:600">{{ vp.name }}</div>
+            <div style="margin-top:4px;font-size:13px;line-height:1.5;color:#9B8D98;text-wrap:pretty">{{ vp.bio }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Home / 08 News" data-reveal="1" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">08 — News</div>
+    <h2 style="margin:20px 0 0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em">In case you missed it<span style="color:#FF8402">.</span></h2>
+    <div style="margin-top:56px;display:grid;grid-template-columns:{{ g.cols3 }};gap:40px 24px">
+      <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+        <div data-reveal="1" data-delay="{{ n.delay }}" style="display:flex;flex-direction:column">
+          <div style="position:relative;aspect-ratio:16/10;background:{{ n.bgc }};filter:grayscale(1)">
+            <image-slot id="{{ n.slot }}" src="{{ n.img }}" fit="{{ n.fitv }}" shape="rect" placeholder="Drop news image"></image-slot>
+          </div>
+          <a href="{{ n.url }}" target="_blank" rel="noopener" style="display:block;color:#ECECEE">
+            <div style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">{{ n.source }}</div>
+            <div style="margin-top:10px;font-size:20px;line-height:1.3;font-weight:500;letter-spacing:-0.015em;text-wrap:pretty">{{ n.title }}</div>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#9B8D98;text-wrap:pretty">{{ n.body }}</p>
+          </a>
+        </div>
+      </sc-for>
+    </div>
+    <a href="#icymi" style="margin-top:40px;display:inline-flex;font-size:15px;font-weight:600;color:#ECECEE;border-bottom:1px solid #FF8402;padding-bottom:3px">View all updates ↗</a>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isApproach }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Approach / Hero" style="max-width:1320px;margin:0 auto;padding:clamp(72px,11vw,160px) clamp(20px,4vw,40px) clamp(60px,8vw,96px)">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">Our approach</div>
+  <h1 style="margin:28px 0 0;font-size:clamp(46px,7.4vw,108px);line-height:0.98;font-weight:500;letter-spacing:-0.045em;max-width:1100px;text-wrap:balance">Being early is the easy part<span style="color:#FF8402">.</span></h1>
+  <div style="margin-top:48px;display:grid;grid-template-columns:{{ g.split }};gap:28px 64px">
+    <div></div>
+    <p style="margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:620px;text-wrap:pretty">Legacy industries don't get transformed by capital alone. They get transformed by visionaries with unfair conviction, and investors willing to be early, specific, and patient in the right places.</p>
+  </div>
+</section>
+
+<section data-screen-label="Approach / Principles" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <sc-for list="{{ aPrinciples }}" as="pr" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:{{ principleCols }};gap:20px 64px;padding:clamp(40px,5vw,64px) 0;border-bottom:1px solid rgba(236,236,238,0.12)" data-reveal="1">
+        <div style="display:flex;gap:24px;align-items:baseline">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8402;flex:none">{{ pr.num }}</div>
+          <h2 style="margin:0;font-size:clamp(28px,3.2vw,44px);line-height:1.08;font-weight:500;letter-spacing:-0.03em;text-wrap:balance">{{ pr.title }}</h2>
+        </div>
+        <div>
+          <p style="margin:0;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:#ECECEE;text-wrap:pretty">{{ pr.body }}</p>
+          <div style="margin-top:24px;padding-top:14px;border-top:1px solid rgba(236,236,238,0.12);font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;letter-spacing:0.12em;text-transform:uppercase;color:#FF8402">{{ pr.proof }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Approach / What we do" data-reveal="1">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+      <h2 style="margin:0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em">What we actually do<span style="color:#FF8402">.</span></h2>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">The gap between a first check and a real company is four problems wide. We work all four with you.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:{{ g.cols4 }};gap:1px;background:rgba(236,236,238,0.12);border:1px solid rgba(236,236,238,0.12)">
+      <sc-for list="{{ supports }}" as="s" hint-placeholder-count="4">
+        <div data-reveal="1" data-delay="{{ s.delay }}" style="background:#1B1019;padding:28px;min-height:220px;display:flex;flex-direction:column;transition:background .45s" style-hover="background:#2B1B27">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8402">{{ s.num }}</div>
+          <div style="margin-top:auto;padding-top:48px;font-size:26px;font-weight:500;letter-spacing:-0.02em">{{ s.title }}</div>
+          <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#9B8D98;text-wrap:pretty">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Approach / Founder quotes" style="border-top:1px solid rgba(236,236,238,0.1)" data-reveal="1">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">From our founders</div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:{{ g.cols3 }};gap:24px">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <figure data-reveal="1" data-delay="{{ q.delay }}" style="margin:0;display:flex;flex-direction:column;padding:32px;border:1px solid rgba(236,236,238,0.12);min-height:360px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+            <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;background:#2B1B27;filter:grayscale(1);flex:none">
+              <image-slot id="{{ q.slot }}" src="{{ q.photo }}" shape="circle" placeholder="Photo" style="width:56px;height:56px"></image-slot>
+            </div>
+            <img src="{{ q.src }}" alt="" style="width:{{ q.lw }};height:{{ q.lh }};opacity:0.9;display:block">
+          </div>
+          <blockquote style="margin:32px 0 0;font-size:clamp(19px,1.6vw,22px);line-height:1.4;font-weight:500;letter-spacing:-0.01em;text-wrap:pretty">“{{ q.quote }}”</blockquote>
+          <figcaption style="margin-top:auto;padding-top:28px;font-size:14px;line-height:1.5"><span style="font-weight:600">{{ q.name }}</span> <span style="color:#9B8D98">· {{ q.role }}</span></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Approach / Intro to term sheet" style="border-top:1px solid rgba(236,236,238,0.1)" data-reveal="1">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(60px,8vw,96px) clamp(20px,4vw,40px)">
+    <div style="display:grid;grid-template-columns:{{ g.split }};gap:28px 64px;align-items:end">
+      <h2 style="margin:0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">From intro to term sheet<span style="color:#FF8402">.</span></h2>
+      <p style="margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.55;text-wrap:pretty">We tell founders where they stand at every step. No ghosting, no fake process, no diligence theatre.</p>
+    </div>
+    <div style="margin-top:64px;display:grid;grid-template-columns:{{ g.cols4 }};gap:40px 32px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <div data-reveal="1" data-delay="{{ st.delay }}">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:9px;height:9px;background:#FF8402;flex:none"></div>
+            <div style="flex:1;height:1px;background:rgba(236,236,238,0.2)"></div>
+          </div>
+          <div style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">{{ st.when }}</div>
+          <div style="margin-top:10px;font-size:22px;font-weight:500;letter-spacing:-0.015em">{{ st.title }}</div>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.6;color:#9B8D98;text-wrap:pretty">{{ st.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:64px;display:flex;flex-wrap:wrap;gap:12px">
+      <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;background:#ECECEE;color:#1B1019;font-size:15px;font-weight:600" style-hover="background:#FF8402;color:#1B1019">Pitch us</a>
+      <a href="#portfolio" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border:1px solid rgba(236,236,238,0.4);color:#ECECEE;font-size:15px;font-weight:600" style-hover="border-color:#ECECEE;color:#ECECEE">See who we've backed</a>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isPortfolio }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Portfolio / Hero" style="max-width:1320px;margin:0 auto;padding:clamp(72px,11vw,160px) clamp(20px,4vw,40px) clamp(48px,6vw,72px)">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">Portfolio</div>
+  <h1 style="margin:28px 0 0;font-size:clamp(46px,7.4vw,108px);line-height:0.98;font-weight:500;letter-spacing:-0.045em;max-width:1200px;text-wrap:balance">Nuclear reactors. Space stations. Longevity<span style="color:#FF8402">.</span></h1>
+  <div style="margin-top:48px;display:grid;grid-template-columns:{{ g.split }};gap:28px 64px">
+    <div></div>
+    <p style="margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:620px;text-wrap:pretty">Founders building purpose-driven businesses in industries that were supposed to be impossible to move — alongside world-class co-investors.</p>
+  </div>
+</section>
+
+<div data-screen-label="Portfolio / Filter bar" style="position:sticky;top:0;z-index:10;background:#1B1019;border-top:1px solid rgba(236,236,238,0.1);border-bottom:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button type="button" onClick="{{ f.onClick }}" style="height:34px;padding:0 14px;border:1px solid {{ f.border }};background:{{ f.bg }};color:{{ f.color }};font-family:Figtree,sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background .2s,color .2s,border-color .2s">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">{{ countLabel }}</div>
+  </div>
+</div>
+
+<section data-screen-label="Portfolio / Company grid" style="max-width:1320px;margin:0 auto;padding:40px clamp(20px,4vw,40px) clamp(60px,8vw,96px)">
+  <div style="display:grid;grid-template-columns:{{ g.cols3 }};gap:1px;background:rgba(236,236,238,0.12);border:1px solid rgba(236,236,238,0.12)">
+    <sc-for list="{{ shown }}" as="c" hint-placeholder-count="12">
+      <a data-reveal="1" data-delay="{{ c.delay }}" href="{{ c.url }}" target="_blank" rel="noopener" onMouseEnter="{{ c.onEnter }}" onMouseLeave="{{ c.onLeave }}" style="position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:300px;padding:32px;background:{{ c.bg }};color:#ECECEE;transition:background .45s">
+        <sc-if value="{{ c.hasHover }}" hint-placeholder-val="{{ false }}">
+          <img src="{{ c.hoverImg }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:{{ c.hoverOpacity }};transition:opacity .45s;pointer-events:none">
+        </sc-if>
+        <div style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;height:60px">
+          <sc-if value="{{ c.hasLogo }}" hint-placeholder-val="{{ true }}">
+            <img src="{{ c.src }}" alt="{{ c.name }}" loading="lazy" style="width:{{ c.lw }};height:{{ c.lh }};opacity:0.92;display:block">
+          </sc-if>
+          <sc-if value="{{ c.noLogo }}" hint-placeholder-val="{{ false }}">
+            <div style="width:52px;height:52px;border:1px solid rgba(236,236,238,0.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:0.06em">{{ c.monogram }}</div>
+          </sc-if>
+          <sc-if value="{{ c.hasTag }}" hint-placeholder-val="{{ false }}">
+            <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:#FFB066;color:#1B1019;padding:4px 8px;white-space:nowrap">{{ c.tag }}</span>
+          </sc-if>
+        </div>
+        <div style="position:relative;margin-top:32px;font-size:21px;font-weight:600;letter-spacing:-0.015em">{{ c.name }}</div>
+        <p style="position:relative;margin:8px 0 0;font-size:14px;line-height:1.55;color:#9B8D98;text-wrap:pretty">{{ c.desc }}</p>
+        <div style="position:relative;margin-top:auto;padding-top:28px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1.5;letter-spacing:0.12em;text-transform:uppercase;color:#9B8D98">
+          <span>{{ c.sector }}</span>
+          <span style="white-space:nowrap;color:{{ c.visitColor }};transition:color .45s">Visit ↗</span>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isIcymi }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="ICYMI / Hero" style="max-width:1320px;margin:0 auto;padding:clamp(72px,11vw,160px) clamp(20px,4vw,40px) clamp(48px,6vw,72px)">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">In case you missed it</div>
+  <div style="margin-top:28px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px">
+    <h1 style="margin:0;font-size:clamp(46px,7.4vw,108px);line-height:0.98;font-weight:500;letter-spacing:-0.045em">The latest<br>and greatest<span style="color:#FF8402">.</span></h1>
+    <a href="https://medium.com/" target="_blank" rel="noopener" style="display:inline-flex;font-size:15px;font-weight:600;color:#ECECEE;border-bottom:1px solid #FF8402;padding-bottom:3px">Read us on Medium ↗</a>
+  </div>
+</section>
+
+<section data-screen-label="ICYMI / Lead story" style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+  <div style="display:grid;grid-template-columns:{{ leadCols }};border:1px solid rgba(236,236,238,0.12)">
+    <div style="position:relative;min-height:320px;aspect-ratio:{{ leadAspect }};background:#2B1B27;filter:grayscale(1)">
+      <image-slot id="{{ lead.slot }}" src="{{ lead.img }}" shape="rect" placeholder="Drop lead story image"></image-slot>
+    </div>
+    <a href="{{ lead.url }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;padding:clamp(28px,3.5vw,48px);color:#ECECEE;transition:background .45s" style-hover="background:#2B1B27;color:#ECECEE">
+      <div style="display:flex;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase"><span style="color:#FF8402">{{ lead.source }}</span><span style="color:#9B8D98">{{ lead.date }}</span></div>
+      <h2 style="margin:24px 0 0;font-size:clamp(26px,2.8vw,40px);line-height:1.12;font-weight:500;letter-spacing:-0.025em;text-wrap:balance">{{ lead.title }}</h2>
+      <p style="margin:20px 0 0;font-size:16px;line-height:1.6;color:#9B8D98;text-wrap:pretty">{{ lead.body }}</p>
+      <div style="margin-top:auto;padding-top:32px;font-size:15px;font-weight:600">Read more <span style="color:#FF8402">↗</span></div>
+    </a>
+  </div>
+</section>
+
+<section data-screen-label="ICYMI / News list" style="max-width:1320px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px) clamp(60px,8vw,96px)">
+  <div style="border-top:1px solid rgba(236,236,238,0.2)">
+    <sc-for list="{{ iNews }}" as="n" hint-placeholder-count="12">
+      <a data-reveal="1" data-delay="{{ n.delay }}" href="{{ n.url }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:{{ rowCols }};align-items:start;gap:12px 32px;padding:28px 0;border-bottom:1px solid rgba(236,236,238,0.12);color:#ECECEE">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:32px;height:32px;flex:none;border:1px solid rgba(236,236,238,0.25);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.04em;color:#ECECEE">{{ n.mono }}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.5;letter-spacing:0.12em;text-transform:uppercase"><span style="color:#9B8D98">{{ n.date }}</span><br><span style="color:#FF8402">{{ n.source }}</span></div>
+        </div>
+        <div>
+          <div style="font-size:clamp(19px,1.7vw,23px);line-height:1.3;font-weight:500;letter-spacing:-0.015em;text-wrap:pretty">{{ n.title }}</div>
+          <p style="margin:8px 0 0;font-size:14px;line-height:1.55;color:#9B8D98;text-wrap:pretty">{{ n.body }}</p>
+        </div>
+        <sc-if value="{{ showArrow }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:18px;color:#FF8402;padding-top:2px">↗</div>
+        </sc-if>
+      </a>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Contact / Hero" style="max-width:1320px;margin:0 auto;padding:clamp(72px,11vw,160px) clamp(20px,4vw,40px) clamp(48px,6vw,72px)">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#FF8402">Get in touch</div>
+  <h1 style="margin:28px 0 0;font-size:clamp(46px,7.4vw,108px);line-height:0.98;font-weight:500;letter-spacing:-0.045em;max-width:1100px;text-wrap:balance">Tell us what you're building<span style="color:#FF8402">.</span></h1>
+  <div style="margin-top:40px;display:grid;grid-template-columns:{{ g.split }};gap:28px 64px">
+    <div></div>
+    <p style="margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:560px;text-wrap:pretty">Send a short note and the team will get back to you.</p>
+  </div>
+</section>
+
+<section data-screen-label="Contact / Form" style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,4vw,40px) clamp(60px,8vw,96px);">
+
+    <div data-reveal="1" style="max-width:880px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">Send a note</div>
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSubmit }}" style="margin-top:24px;display:grid;grid-template-columns:{{ fieldCols }};gap:24px">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <label style="display:grid;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">Name</span>
+            <input type="text" name="name" required autocomplete="name" style="height:52px;padding:0 16px;background:transparent;border:1px solid rgba(236,236,238,0.25);border-radius:0;color:#ECECEE;font:inherit;font-size:16px;outline:none;transition:border-color .2s" style-focus="border-color:#FF8402">
+          </label>
+          <label style="display:grid;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">Email</span>
+            <input type="email" name="email" required autocomplete="email" style="height:52px;padding:0 16px;background:transparent;border:1px solid rgba(236,236,238,0.25);border-radius:0;color:#ECECEE;font:inherit;font-size:16px;outline:none;transition:border-color .2s" style-focus="border-color:#FF8402">
+          </label>
+          <label style="display:grid;gap:10px;grid-column:1/-1">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">Company</span>
+            <input type="text" name="company" autocomplete="organization" style="height:52px;padding:0 16px;background:transparent;border:1px solid rgba(236,236,238,0.25);border-radius:0;color:#ECECEE;font:inherit;font-size:16px;outline:none;transition:border-color .2s" style-focus="border-color:#FF8402">
+          </label>
+          <label style="display:grid;gap:10px;grid-column:1/-1">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">What are you building?</span>
+            <textarea name="message" required rows="5" placeholder="A few lines is plenty. Links to a deck are welcome." style="padding:14px 16px;background:transparent;border:1px solid rgba(236,236,238,0.25);border-radius:0;color:#ECECEE;font:inherit;font-size:16px;line-height:1.5;resize:vertical;outline:none;transition:border-color .2s" style-focus="border-color:#FF8402"></textarea>
+          </label>
+          <div style="grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px">
+            <button type="submit" disabled="{{ sending }}" style="height:48px;padding:0 28px;border:0;border-radius:0;background:#ECECEE;color:#1B1019;font-family:Figtree,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s" style-hover="background:#FF8402">{{ submitLabel }}</button>
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:14px;line-height:1.5;color:#FFB066">Couldn't send just now. Try again, or email hello@theventurecollective.com.</span>
+            </sc-if>
+          </div>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:24px;padding:40px 32px;border:1px solid rgba(236,236,238,0.12);background:#2B1B27">
+          <div style="font-size:clamp(26px,2.6vw,34px);line-height:1.15;font-weight:500;letter-spacing:-0.025em">Thanks. We have your note<span style="color:#FF8402">.</span></div>
+        </div>
+      </sc-if>
+    </div>
+
+  </div>
+</section>
+</sc-if>
+
+<footer style="border-top:1px solid rgba(236,236,238,0.1)">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,40px) 40px">
+    <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+      <div style="padding-top:clamp(60px,8vw,96px);padding-bottom:72px;display:grid;grid-template-columns:{{ g.split }};gap:32px 64px;align-items:end">
+        <h2 style="margin:0;font-size:clamp(34px,4.2vw,58px);line-height:1.04;font-weight:500;letter-spacing:-0.035em;text-wrap:balance">Building in a legacy industry<span style="color:#FF8402">?</span></h2>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;background:#ECECEE;color:#1B1019;font-size:15px;font-weight:600" style-hover="background:#FF8402;color:#1B1019">Get in touch</a>
+        </div>
+      </div>
+    </sc-if>
+    <div style="padding-top:24px;border-top:1px solid rgba(236,236,238,0.12);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#9B8D98">
+      <span>© 2026 The Venture Collective</span>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 28px">
+        <a href="#home" style="color:#9B8D98">Home</a>
+        <a href="#approach" style="color:#9B8D98">Approach</a>
+        <a href="#portfolio" style="color:#9B8D98">Portfolio</a>
+        <a href="#icymi" style="color:#9B8D98">ICYMI</a>
+        <a href="https://www.linkedin.com/company/the-venture-collective" target="_blank" rel="noopener" style="color:#9B8D98">LinkedIn ↗</a>
+        <a href="https://medium.com/" target="_blank" rel="noopener" style="color:#9B8D98">Medium ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;investLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Sticky scroll&quot;,&quot;Accordion&quot;],&quot;default&quot;:&quot;Sticky scroll&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;heroWordSwap&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;logoMarquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+function WordSwap(props) {
+  const words = props.words;
+  const [i, setI] = React.useState(0);
+  const [st, setSt] = React.useState("shown");
+  React.useEffect(() => {
+    if (!words || words.length < 2 || (window.TVC_MOTION && window.TVC_MOTION.reduced)) return;
+    let t1, t2;
+    const iv = setInterval(() => {
+      setSt("leaving");
+      t1 = setTimeout(() => { setI((n) => (n + 1) % words.length); setSt("entering"); t2 = setTimeout(() => setSt("shown"), 40); }, 380);
+    }, 2800);
+    return () => { clearInterval(iv); clearTimeout(t1); clearTimeout(t2); };
+  }, [words && words.join("|")]);
+  return React.createElement("em", {
+    style: {
+      display: "inline-block", fontStyle: "italic", fontWeight: 400,
+      transition: st === "entering" ? "none" : "opacity .38s ease, transform .38s ease",
+      opacity: st === "shown" ? 1 : 0,
+      transform: st === "leaving" ? "translateY(-0.2em)" : st === "entering" ? "translateY(0.2em)" : "none"
+    }
+  }, words[i]);
+}
+
+function CountUp(props) {
+  const m = String(props.value).match(/^([^0-9]*)([\d.,]+)(.*)$/);
+  const ref = React.useRef(null);
+  const [txt, setTxt] = React.useState(props.value);
+  React.useEffect(() => {
+    if (!m || !ref.current || (window.TVC_MOTION && window.TVC_MOTION.reduced) || !("IntersectionObserver" in window)) return;
+    const target = parseFloat(m[2].replace(/,/g, ""));
+    const dec = (m[2].split(".")[1] || "").length;
+    const fmt = (v) => m[1] + v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }) + m[3];
+    setTxt(fmt(0));
+    let raf;
+    const io = new IntersectionObserver((es) => {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      const t0 = performance.now(), dur = 1400;
+      const step = (t) => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); setTxt(fmt(target * e)); if (p < 1) raf = requestAnimationFrame(step); };
+      raf = requestAnimationFrame(step);
+    }, { threshold: 0.4 });
+    io.observe(ref.current);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, [props.value]);
+  return React.createElement("span", { ref }, txt);
+}
+
+const PAGES = ["home", "approach", "portfolio", "icymi", "contact"];
+const SHORT = { "Industrial & Advanced Manufacturing": "Industrial", "Energy & AI Infrastructure": "Energy & AI", "Healthcare & Applied Bio": "Healthcare & Bio", "Aerospace, Defense & Critical Materials": "Aerospace & Defense" };
+const pageFromHash = () => { const h = (location.hash || "").replace("#", ""); return PAGES.indexOf(h) >= 0 ? h : "home"; };
+
+class Component extends DCLogic {
+  state = { page: pageFromHash(), open: 0, w: window.innerWidth, sector: "All", hover: null, status: "idle", ready: !!window.TVC };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onHash = () => { const p = pageFromHash(); if (p !== this.state.page) { this.setState({ page: p, hover: null, open: 0 }); window.scrollTo(0, 0); } };
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("hashchange", this.onHash);
+    if (!window.TVC || !window.TVC_MOTION) this.poll = setInterval(() => { if (window.TVC && window.TVC_MOTION) { clearInterval(this.poll); this.setState({ ready: true }); } }, 50);
+    this.afterRender();
+  }
+  componentDidUpdate() { this.afterRender(); }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("hashchange", this.onHash);
+    clearInterval(this.poll);
+    if (this.panelIO) this.panelIO.disconnect();
+  }
+  afterRender() {
+    if (window.TVC_MOTION) window.TVC_MOTION.reveal();
+    if (!("IntersectionObserver" in window)) return;
+    if (!this.panelIO) {
+      this.panelIO = new IntersectionObserver((es) => {
+        es.forEach((e) => { if (e.isIntersecting) { const i = +e.target.getAttribute("data-invest-panel"); if (i !== this.state.open) this.setState({ open: i }); } });
+      }, { rootMargin: "-45% 0px -45% 0px" });
+    }
+    document.querySelectorAll("[data-invest-panel]:not([data-io])").forEach((el) => { el.setAttribute("data-io", "1"); this.panelIO.observe(el); });
+  }
+  submit(e) {
+    e.preventDefault();
+    const body = new URLSearchParams(new FormData(e.target)).toString();
+    this.setState({ status: "sending" });
+    // Netlify Forms receives POSTs to "/". In this preview there's no Netlify, so it simulates success.
+    const preview = /claudeusercontent|localhost|^$/.test(location.hostname);
+    const done = () => this.setState({ status: "sent" });
+    if (preview) { setTimeout(done, 500); return; }
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
+      .then((r) => (r.ok ? done() : this.setState({ status: "error" })))
+      .catch(() => this.setState({ status: "error" }));
+  }
+  renderVals() {
+    const D = window.TVC, U = window.TVC_UTIL, M = window.TVC_MOTION;
+    if (!D || !U || !M) return {};
+    const w = this.state.w, g = U.cols(w), page = this.state.page, one = "minmax(0,1fr)";
+    const cols4n = g.phone ? 1 : g.tab ? 2 : 4, cols3n = g.phone ? 1 : w <= 860 ? 2 : 3;
+    const nav = (p) => (p === page ? "#FF8402" : "#ECECEE");
+
+    // Home
+    const sticky = (this.props.investLayout ?? "Sticky scroll") === "Sticky scroll" && !g.tab;
+    const swap = this.props.heroWordSwap ?? true;
+    const featured = D.companies.filter((c) => c.featured).sort((a, b) => a.featured - b.featured);
+    const logos = D.companies.filter((c) => c.logo).map((c) => { const b = U.logoBox(c.ratio, 2200, 150, 44); return { name: c.name, url: c.url, src: U.logoSrc(c.logo), lw: b.w, lh: b.h }; });
+
+    // Portfolio
+    const active = this.state.sector;
+    const list = active === "All" ? D.companies : D.companies.filter((c) => c.sector === active);
+
+    // Contact
+    const st = this.state.status, contact = D.contact || {};
+
+    return {
+      g,
+      isHome: page === "home", isApproach: page === "approach", isPortfolio: page === "portfolio", isIcymi: page === "icymi", isContact: page === "contact",
+      showCta: page !== "contact",
+      navHome: nav("home"), navApproach: nav("approach"), navPortfolio: nav("portfolio"), navIcymi: nav("icymi"), navContact: nav("contact"),
+      navContactBorder: page === "contact" ? "#FF8402" : "rgba(236,236,238,0.4)",
+
+      swapOn: swap, swapOff: !swap,
+      wordDisplay: g.phone ? "block" : "inline",
+      heroWord: React.createElement(WordSwap, { words: D.heroWords || ["legacy"] }),
+      marqueeOn: this.props.logoMarquee ?? true,
+      marqueeLogos: logos.concat(logos),
+      stickyInvest: sticky, accordionInvest: !sticky,
+      accCols: g.tab ? one : "112px minmax(0,1fr)",
+      accInner: w <= 860 ? one : "minmax(0,3fr) minmax(0,2fr)",
+      points: M.stagger(D.points, 1, 120),
+      pointsSources: D.pointsSources,
+      stats: M.stagger(D.stats, cols4n).map((s) => Object.assign({}, s, { node: React.createElement(CountUp, { value: s.value }) })),
+      statsSources: D.statsSources,
+      principles: M.stagger(D.principles, 1, 110),
+      industries: D.industries.map((ind, i) => {
+        const open = i === this.state.open;
+        return Object.assign({}, ind, {
+          idx: String(i),
+          isFactory: ind.icon === "factory", isServer: ind.icon === "server", isDna: ind.icon === "dna", isShield: ind.icon === "shield",
+          headCols: g.phone ? "28px 32px minmax(0,1fr)" : "48px 48px minmax(0,1fr) auto",
+          rows: open ? "1fr" : "0fr",
+          bg: open ? "#2B1B27" : "transparent",
+          titleColor: open ? "#FFFFFF" : "#9B8D98",
+          numColor: open ? "#FF8402" : "#9B8D98",
+          pillOpacity: open && !g.phone ? 1 : 0,
+          markOpacity: open ? 1 : 0,
+          panelOpacity: open ? 1 : 0.35,
+          onOpen: () => this.setState({ open: i }),
+          onJump: () => { const el = document.querySelector('[data-invest-panel="' + i + '"]'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.14, behavior: "smooth" }); }
+        });
+      }),
+      companies: M.stagger(featured, cols4n).map((c) => {
+        const box = U.logoBox(c.ratio, 3400, 160, 52);
+        const tag = c.homeTag || c.tag;
+        return Object.assign({}, c, { desc: c.short || c.desc, tag, hasTag: !!tag, src: U.logoSrc(c.logo), lw: box.w, lh: box.h });
+      }),
+      team: M.stagger(D.team, cols4n).map((m) => Object.assign({}, m, { hasImg: !!m.photo, noImg: !m.photo, img: "assets/team/" + m.photo, initials: U.initials(m.name), url: m.url || "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(m.name + " The Venture Collective"), linkLabel: m.linkLabel || "LinkedIn" })),
+      partners: M.stagger(D.partners, cols3n).map((p) => Object.assign({}, p, { initials: U.initials(p.name) })),
+      news: M.stagger(D.homeNews, cols3n).map((n) => Object.assign({}, n, { bgc: n.bg || "#2B1B27", fitv: n.fit || "cover", img: n.img || "" })),
+
+      principleCols: g.tab ? one : "minmax(0,1fr) minmax(0,1fr)",
+      aPrinciples: D.principles.map((p) => Object.assign({}, p, { title: p.longTitle || p.title })),
+      supports: M.stagger(D.supports, cols4n),
+      steps: M.stagger(D.steps, cols4n, 120),
+      quotes: M.stagger(D.quotes, cols3n).map((q) => { const b = U.logoBox(q.ratio, 1800, 120, 40); return Object.assign({}, q, { src: U.logoSrc(q.logo), lw: b.w, lh: b.h, photo: q.photo || "" }); }),
+
+      countLabel: list.length + (list.length === 1 ? " company" : " companies"),
+      filters: ["All"].concat(D.sectors).map((s) => {
+        const on = s === active;
+        return { label: g.phone && SHORT[s] ? SHORT[s] : s, border: on ? "#FF8402" : "rgba(236,236,238,0.25)", bg: on ? "#FF8402" : "transparent", color: on ? "#1B1019" : "#B4A8B2", onClick: () => this.setState({ sector: s }) };
+      }),
+      shown: M.stagger(list, cols3n, 80).map((c) => {
+        const b = U.logoBox(c.ratio, 3800, 180, 58);
+        const hov = this.state.hover === c.name;
+        return Object.assign({}, c, {
+          hasLogo: !!c.logo, noLogo: !c.logo, monogram: U.initials(c.name),
+          src: c.logo ? U.logoSrc(c.logo) : "", lw: b.w, lh: b.h,
+          hasTag: !!c.tag, hasHover: !!c.hoverImg,
+          bg: hov ? "#2B1B27" : "#1B1019", hoverOpacity: hov ? 0.18 : 0, visitColor: hov ? "#FF8402" : "#9B8D98",
+          onEnter: () => this.setState({ hover: c.name }), onLeave: () => this.setState({ hover: null })
+        });
+      }),
+
+      leadCols: w <= 860 ? one : "minmax(0,7fr) minmax(0,5fr)",
+      leadAspect: w <= 860 ? "16/10" : "auto",
+      rowCols: g.phone ? one : "260px minmax(0,1fr) 24px",
+      showArrow: !g.phone,
+      lead: D.lead,
+      iNews: M.stagger(D.news, 1, 0).map((n) => Object.assign({}, n, { mono: U.initials(n.source) })),
+
+      layoutCols: g.tab ? one : "minmax(0,7fr) minmax(0,5fr)",
+      fieldCols: g.phone ? one : "repeat(2,minmax(0,1fr))",
+      showForm: st !== "sent", sent: st === "sent", hasError: st === "error", sending: st === "sending",
+      submitLabel: st === "sending" ? "Sending…" : "Send",
+      onSubmit: (e) => this.submit(e),
+      bookingUrl: contact.bookingUrl || "#",
+      bookingLabel: contact.bookingLabel || "Book an intro call"
+    };
+  }
+}
+</script>
+</body>
+</html>
