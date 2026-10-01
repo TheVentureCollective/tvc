@@ -527,7 +527,7 @@ export default {
     {
       "name": "Cat Middleton",
       "role": "General Partner",
-      "photo": "cat-2.png",
+      "photo": "cat-2.jpg",
       "bio": [
         "Partner, Primary Venture Partners",
         "Member, All Raise",

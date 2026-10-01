@@ -4,7 +4,7 @@ Everything on the site that did not come from TVC's brief or the previous site d
 
 Status key: `[ ]` open · `[x]` approved · `[~]` changed (note what)
 
-Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site still needs the change.
+Last updated: 30 Sep 2026. "Site: done 30 Sep" means Cat approved it but the site still needs the change.
 
 ---
 
@@ -33,8 +33,8 @@ Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site stil
 
 | Status | Where | Current value | Needed |
 |---|---|---|---|
-| [~] | Footer, all pages | linkedin.com/company/the-venture-collective | Cat says linkedin.com/company/hellotvc. She asked us to confirm it's the right page. Site: to do |
-| [x] | Footer + ICYMI "Read us on Medium" | medium.com/ | medium.com/@helloTVC. Site: to do |
+| [~] | Footer, all pages | linkedin.com/company/the-venture-collective | Cat says linkedin.com/company/hellotvc. She asked us to confirm it's the right page. Site: done 30 Sep |
+| [x] | Footer + ICYMI "Read us on Medium" | medium.com/ | medium.com/@helloTVC. Site: done 30 Sep |
 | [~] | Contact booking button | calendly.com/ | No existing link. Create a new Calendly for Cat, then add it |
 | [x] | Contact form | Netlify Forms | hello@theventurecollective.com |
 
@@ -50,7 +50,7 @@ Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site stil
 
 | Status | Item | Issue |
 |---|---|---|
-| [x] | Concert Bio | Correct URL is https://www.concert.bio/. Site: to do |
+| [x] | Concert Bio | Correct URL is https://www.concert.bio/. Site: done 30 Sep |
 | [ ] | Caraway | Brief says no logo file; one exists and is in use. Confirm it's current. |
 | [x] | Terrion | Add to portfolio (new investment). Need logo, one-liner, sector, website. Site: to do |
 
@@ -59,7 +59,7 @@ Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site stil
 | Status | Item | Current state |
 |---|---|---|
 | [~] | Headshots: Nick, Gina, Cat, Nicole | Nick, Gina, Cat in place. Nicole still initials; photo not in Cat's folder |
-| [x] | Team/Ines.jpeg | Ines is leaving. Remove her placeholder. Site: to do |
+| [x] | Team/Ines.jpeg | Ines is leaving. Remove her placeholder. Site: done 30 Sep |
 | [ ] | Venture partner photos (9) | All monograms, by design. Confirm that's intended. |
 | [~] | Founder quote photos (Colin, Pedro, Augie) | Augie in place. Cat getting Colin and Pedro; drop the spots if not in by 3 Oct |
 | [~] | News images (Home, 3) and ICYMI lead image | Home done: Power100, X-Energy, Life Biosciences. ICYMI lead: confirm |

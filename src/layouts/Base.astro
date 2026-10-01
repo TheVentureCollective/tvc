@@ -10,6 +10,7 @@ const nav = [
   { href: "/icymi", label: "ICYMI", id: "icymi" }
 ];
 const current = (id) => (id === page ? "page" : undefined);
+const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, "").replace(/\/$/, "") || "/", Astro.site).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -18,11 +19,20 @@ const current = (id) => (id === page ? "page" : undefined);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content={description}>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href={canonical}>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Venture Collective">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta name="theme-color" content="#1B1019">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="site-header">
     <nav class="wrap" aria-label="Main">
       <a href="/" class="wordmark">The Venture Collective<span class="dot">.</span></a>
@@ -37,7 +47,7 @@ const current = (id) => (id === page ? "page" : undefined);
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <slot />
   </main>
 
