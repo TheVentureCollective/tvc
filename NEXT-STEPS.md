@@ -17,7 +17,8 @@ The site runs at http://localhost:4321. To continue with Claude Code, open it in
 
 ## Done
 
-- Private repo `ellebythesea/tvc` (Lisa's personal GitHub, to be transferred to TVC at handover).\n- Netlify account on Lisa's GitHub login (default team: 21 Robots, not used for TVC).
+- Private repo `ellebythesea/tvc` (Lisa's personal GitHub, to be transferred to TVC at handover).
+- Netlify account on Lisa's GitHub login (default team: 21 Robots, not used for TVC).
 - Astro site with all five pages: `/`, `/approach`, `/portfolio`, `/icymi`, `/contact`. Checked side by side against the design reference at desktop and phone width.
 - All content in `src/data/site.js`.
 - Approved content changes applied: Concert Bio URL, footer LinkedIn (`/company/hellotvc`) and Medium (`@helloTVC`) links, Ines photo removed, booking fields removed.
