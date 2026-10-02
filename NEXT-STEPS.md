@@ -19,7 +19,7 @@ The site runs at http://localhost:4321. To continue with Claude Code, open it in
 
 - Private repo `ellebythesea/tvc` (Lisa's personal GitHub, to be transferred to TVC at handover).
 - Netlify account on Lisa's GitHub login (default team: 21 Robots, not used for TVC).
-- Netlify team "The Venture Collective" (Personal plan, Lisa's card). Project `theventurecollective`, live preview at https://theventurecollective.netlify.app. Deploys automatically on every push to `main`. Form detection is on.
+- Netlify team "The Venture Collective" (Personal plan, Lisa's card). Project `theventurecollective`, live preview at https://theventurecollective.netlify.app. Deploys automatically on every push to `main`. Form detection is on. Builds are skipped when a push only changes notes or `docs/` (saves credits).
 - Astro site with all five pages: `/`, `/approach`, `/portfolio`, `/icymi`, `/contact`. Checked side by side against the design reference at desktop and phone width.
 - All content in `src/data/site.js`.
 - Approved content changes applied: Concert Bio URL, footer LinkedIn (`/company/hellotvc`) and Medium (`@helloTVC`) links, Ines photo removed, booking fields removed.
@@ -40,7 +40,7 @@ What the domain uses today (checked 1 Oct):
 ### 1. Now: build on Lisa's accounts
 1. ~~Netlify: create a team called "The Venture Collective" on the Personal plan ($9/month), on Lisa's card.~~ Done 1 Oct. (A second team can't be on the free plan.)
 2. ~~Import `ellebythesea/tvc` into that team.~~ Done 1 Oct.
-3. Project configuration > Forms > Form notifications: email alerts go to Lisa while testing.
+3. ~~Form notifications~~ Done 1 Oct: Forms > Submission notifications emails 21robots@gmail.com (subject "TVC site: new contact form message"). Switch to hello@theventurecollective.com at launch.
 4. Share the `*.netlify.app` preview link with Cat for review.
 5. Test on real phones: iOS Safari and Android Chrome at 375px and 390px width (handoff requirement).
 
