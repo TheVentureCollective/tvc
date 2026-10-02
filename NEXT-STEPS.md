@@ -19,6 +19,7 @@ The site runs at http://localhost:4321. To continue with Claude Code, open it in
 
 - Private repo `ellebythesea/tvc` (Lisa's personal GitHub, to be transferred to TVC at handover).
 - Netlify account on Lisa's GitHub login (default team: 21 Robots, not used for TVC).
+- Netlify team "The Venture Collective" (Personal plan, Lisa's card). Project `theventurecollective`, live preview at https://theventurecollective.netlify.app. Deploys automatically on every push to `main`. Form detection is on.
 - Astro site with all five pages: `/`, `/approach`, `/portfolio`, `/icymi`, `/contact`. Checked side by side against the design reference at desktop and phone width.
 - All content in `src/data/site.js`.
 - Approved content changes applied: Concert Bio URL, footer LinkedIn (`/company/hellotvc`) and Medium (`@helloTVC`) links, Ines photo removed, booking fields removed.
@@ -37,8 +38,8 @@ What the domain uses today (checked 1 Oct):
 - **Email:** Google Workspace (hello@). Its MX records must not be touched.
 
 ### 1. Now: build on Lisa's accounts
-1. Netlify: create a team called "The Venture Collective" on the **Personal plan ($9/month)**, on Lisa's card. A second team can't be on the free plan.
-2. Import `ellebythesea/tvc` into that team. Build settings fill in from `netlify.toml`.
+1. ~~Netlify: create a team called "The Venture Collective" on the Personal plan ($9/month), on Lisa's card.~~ Done 1 Oct. (A second team can't be on the free plan.)
+2. ~~Import `ellebythesea/tvc` into that team.~~ Done 1 Oct.
 3. Project configuration > Forms > Form notifications: email alerts go to Lisa while testing.
 4. Share the `*.netlify.app` preview link with Cat for review.
 5. Test on real phones: iOS Safari and Android Chrome at 375px and 390px width (handoff requirement).
@@ -60,7 +61,7 @@ What the domain uses today (checked 1 Oct):
     - Invite Cat as Owner. If the Personal plan won't allow a second member, upgrade to Pro ($20) for the handover; Netlify only lets an Owner leave once another Owner exists.
     - Cat replaces Lisa's card under billing.
     - Lisa leaves the team.
-    - Cat can move back to Personal afterwards.
+    - Cat can move back to Personal afterwards. **But** Netlify lists "Private organization repos" as a Pro feature: once the repo is a private repo in TVC's GitHub organization, Personal may not build it. Either stay on Pro or make the repo public (harmless for a marketing site; everything in it is already public on the website).
 15. Lisa leaves the Cloudflare account and the GitHub organization.
 
 **Cost to Lisa:** about $9 for October, plus a few prorated dollars if Pro is needed for the handover. After that, nothing.
