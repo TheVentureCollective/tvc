@@ -24,3 +24,7 @@ Marketing site for The Venture Collective (TVC), an early-stage venture firm. Li
 - Corner radius 0 everywhere except circles. No shadows or gradients.
 - Every H1 and H2 ends with an orange period (`<span class="dot">.</span>`).
 - Respect `prefers-reduced-motion`.
+
+## Netlify credits
+
+Every push to `main` that touches the site publishes to Netlify and costs about 15 credits (the Personal plan has 1,000 a month). Commit locally as you go and push in batches. Commits that only change notes or `docs/` skip the build automatically (`ignore` in `netlify.toml`). Add `[skip netlify]` to a commit message to skip a build on purpose.
