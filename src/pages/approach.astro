@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import site from "../data/site.js";
-import { logoBox, logoSrc, delay } from "../lib/util.js";
+import { initials, logoBox, logoSrc, delay } from "../lib/util.js";
 ---
 <Base
   page="approach"
@@ -59,7 +59,7 @@ import { logoBox, logoSrc, delay } from "../lib/util.js";
         {site.quotes.map((q, i) => (
           <figure class="quote" data-reveal data-delay={delay(i, 3)}>
             <div class="quote-head">
-              <div class="avatar">{q.photo && <img src={q.photo} alt={q.name} loading="lazy" />}</div>
+              <div class="avatar">{q.photo ? <img src={q.photo} alt={q.name} loading="lazy" /> : initials(q.name)}</div>
               <img src={logoSrc(q.logo)} alt="" style={`${logoBox(q.ratio, 1800, 120, 40)};opacity:0.9`} />
             </div>
             <blockquote>“{q.quote}”</blockquote>

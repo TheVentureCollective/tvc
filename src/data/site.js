@@ -296,6 +296,16 @@ export default {
       "url": "https://www.gravitics.com/"
     },
     {
+      "name": "Terrion",
+      "logo": "terrion",
+      "ratio": 5.62,
+      "desc": "Fully domestic synthetic graphite from American anthracite, made with patented lower-temperature chemistry.",
+      "short": "American Graphite. Breakthrough Chemistry.",
+      "sector": "Aerospace, Defense & Critical Materials",
+      "tag": "",
+      "url": "https://www.terrion.io/"
+    },
+    {
       "name": "BIOS Health",
       "logo": "bios-health",
       "ratio": 3.19,
@@ -537,7 +547,7 @@ export default {
     {
       "name": "Nicole Seligman",
       "role": "Executive in Residence",
-      "photo": "",
+      "photo": "nicole.jpg",
       "url": "https://en.wikipedia.org/wiki/Nicole_Seligman",
       "linkLabel": "Wikipedia",
       "bio": [
@@ -785,14 +795,16 @@ export default {
       "name": "Colin Doughan",
       "role": "Co-Founder & CEO, Gravitics",
       "logo": "gravitics",
-      "ratio": 1.97
+      "ratio": 1.97,
+      "photo": "/assets/founders/colin.jpeg"
     },
     {
       "quote": "We value the combination of experience, strategic thinking and pragmatism.",
       "name": "Pedro Gómez",
       "role": "Co-Founder & CEO, Orbem",
       "logo": "orbem",
-      "ratio": 5.47
+      "ratio": 5.47,
+      "photo": "/assets/founders/pedro.jpeg"
     },
     {
       "quote": "TVC got the market, but they got the engineering too — and that's rare. They're the partner you text for guidance long before the board meeting starts.",

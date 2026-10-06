@@ -226,7 +226,7 @@ p { text-wrap: pretty; }
 .quotes { margin-top: 32px; gap: 24px; }
 .quote { margin: 0; display: flex; flex-direction: column; padding: 32px; border: 1px solid var(--line-2); min-height: 360px; }
 .quote-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; background: var(--surface); filter: grayscale(1); flex: none; }
+.avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; background: var(--surface); filter: grayscale(1); flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 14px; letter-spacing: 0.06em; color: var(--fg); }
 .avatar img { width: 100%; height: 100%; object-fit: cover; }
 .quote blockquote { margin: 32px 0 0; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; }
 .quote figcaption { margin-top: auto; padding-top: 28px; font-size: 14px; line-height: 1.5; }

@@ -4,7 +4,7 @@ Everything on the site that did not come from TVC's brief or the previous site d
 
 Status key: `[ ]` open · `[x]` approved · `[~]` changed (note what)
 
-Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site still needs the change. "Site: done" means the change is in the built site.
+Last updated: 5 Oct 2026. "Site: to do" means Cat approved it but the site still needs the change. "Site: done" means the change is in the built site.
 
 ---
 
@@ -52,16 +52,16 @@ Last updated: 30 Sep 2026. "Site: to do" means Cat approved it but the site stil
 |---|---|---|
 | [x] | Concert Bio | Correct URL is https://www.concert.bio/. Site: done 30 Sep |
 | [ ] | Caraway | Brief says no logo file; one exists and is in use. Confirm it's current. |
-| [x] | Terrion | Add to portfolio (new investment). Need logo, one-liner, sector, website. Site: to do |
+| [x] | Terrion | Added to the Portfolio page with Cat's logo, website and a shortened one-liner: "Fully domestic synthetic graphite from American anthracite, made with patented lower-temperature chemistry." Not in the Home snapshot. Site: done |
 
 ## 5. Assets and decisions waiting on Cat
 
 | Status | Item | Current state |
 |---|---|---|
-| [~] | Headshots: Nick, Gina, Cat, Nicole | Nick, Gina, Cat in place. Nicole still initials; photo not in Cat's folder |
+| [~] | Headshots: Nick, Gina, Cat, Nicole | All in place. Nicole's photo was found by Lisa, not sent by Cat; awaiting Cat's OK |
 | [x] | Team/Ines.jpeg | Ines is leaving. Remove her placeholder. Site: done 30 Sep |
 | [ ] | Venture partner photos (9) | All monograms, by design. Confirm that's intended. |
-| [~] | Founder quote photos (Colin, Pedro, Augie) | Augie in place. Cat getting Colin and Pedro; drop the spots if not in by 3 Oct |
+| [~] | Founder quote photos (Colin, Pedro, Augie) | All in place. Colin's photo was found by Lisa; awaiting Cat's OK |
 | [~] | News images (Home, 3) and ICYMI lead image | Home done: Power100, X-Energy, Life Biosciences. ICYMI lead: confirm |
 | [x] | Who will update the site | Nick, Gina and Cat |
 | [~] | Netlify + GitHub accounts, domain access | Plan agreed: set up on hello@ with our 2FA, hand to Cat Mon 13 Oct. Cat adds the card in Netlify. Registrar still unknown |
