@@ -1,6 +1,6 @@
 # TVC site: status and next steps
 
-Last updated: 1 Oct 2026
+Last updated: 6 Oct 2026
 
 Key dates: all content in by **Fri 3 Oct**, launch **Fri 10 Oct**, handover to Cat Middleton **Mon 13 Oct**.
 
@@ -47,7 +47,7 @@ What the domain uses today (checked 1 Oct):
 
 ### 2. This week: two invites from Cat
 6. **Cloudflare:** Cat invites Lisa's email as a member of TVC's Cloudflare account (Manage account > Members).
-7. **GitHub:** Cat recovers github.com/TheVentureCollective (registered to hello@; password reset at github.com/password_reset) and invites `ellebythesea` as Owner. Backup: she creates a new free GitHub organization and invites Lisa.
+7. ~~**GitHub:** Cat invites `ellebythesea` to github.com/TheVentureCollective as Owner.~~ Done 6 Oct: Lisa is an Owner. Other members: EmilyWB, ginatvc. The org already has four private repos (`tvc-app`, `tvc-landing-page`, `tvc-app-next-gen`, `tvc-app-old`); leave them alone. The transferred repo will keep the name `tvc`, which doesn't clash.
 
 ### 3. Launch, Fri 10 Oct
 8. Netlify > Domain management: add theventurecollective.com and www.theventurecollective.com.
@@ -72,7 +72,7 @@ What the domain uses today (checked 1 Oct):
 ## Waiting on Cat (content due 3 Oct)
 
 - **Photos for Nicole and Colin:** Lisa found these herself. Cat to confirm they're OK, or send others.
-- **The Cloudflare and GitHub invites** above.
+- **The Cloudflare invite** above (GitHub done 6 Oct).
 - Open copy approvals in `docs/design_handoff_tvc_site/Sign-off list.md`.
 - Whether to use the two group photos (removed from the site build; originals are in `docs/`).
 
