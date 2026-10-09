@@ -50,8 +50,11 @@ What the domain uses today (checked 1 Oct):
 7. ~~**GitHub:** Cat invites `ellebythesea` to github.com/TheVentureCollective as Owner.~~ Done 6 Oct: Lisa is an Owner. Other members: EmilyWB, ginatvc. The org already has four private repos (`tvc-app`, `tvc-landing-page`, `tvc-app-next-gen`, `tvc-app-old`); leave them alone. The transferred repo will keep the name `tvc`, which doesn't clash.
 
 ### 3. Launch, Fri 10 Oct
-8. Netlify > Domain management: add theventurecollective.com and www.theventurecollective.com.
-9. Cloudflare DNS: point the root and `www` records at Netlify, using the values Netlify shows. Change **only** those records. Leave the MX records (email) and the nameservers alone.
+8. ~~Netlify > Domain management: add theventurecollective.com and www.theventurecollective.com.~~ Done 8 Oct. The root is the primary domain; www redirects to it.
+9. Cloudflare DNS (whoever has the login; email drafted 8 Oct): delete the existing A and AAAA records for the root and `www`, then add:
+    - `CNAME` `@` → `apex-loadbalancer.netlify.com`, proxy **off** (grey cloud, "DNS only"). Cloudflare flattens a root CNAME automatically.
+    - `CNAME` `www` → `theventurecollective.netlify.app`, proxy **off**.
+    Change **only** those records. Leave MX, TXT and any other subdomains alone, and don't change the nameservers at GoDaddy. Proxy must be off or Netlify can't issue the HTTPS certificate.
 10. Wait for Netlify's HTTPS certificate, then check the live site and send a test through the contact form.
 11. Switch form notifications to hello@theventurecollective.com.
 
