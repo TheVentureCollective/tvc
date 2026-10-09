@@ -35,7 +35,7 @@ const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, "").repl
   <a href="#main" class="skip-link">Skip to content</a>
   <header class="site-header">
     <nav class="wrap" aria-label="Main">
-      <a href="/" class="wordmark">The Venture Collective<span class="dot">.</span></a>
+      <a href="/" class="wordmark"><img src="/assets/tvc-logo.png" alt="" width="40" height="24"><span>The Venture Collective<span class="dot">.</span></span></a>
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-links">
         <span class="sr-only">Menu</span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h18M3 17h18"/></svg>
@@ -55,7 +55,7 @@ const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, "").repl
     <div class="wrap">
       {cta && (
         <div class="split end footer-cta">
-          <h2 class="h2 flush">Building in a legacy industry<span class="dot">?</span></h2>
+          <h2 class="h2 flush">Are you building something hard<span class="dot">?</span></h2>
           <div class="btns"><a href="/contact" class="btn btn-fill">Get in touch</a></div>
         </div>
       )}

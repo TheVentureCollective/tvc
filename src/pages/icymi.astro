@@ -20,7 +20,7 @@ const lead = site.lead;
 
   <section class="wrap">
     <div class="lead-story">
-      <div class="lead-img"><img src={lead.img} alt="" /></div>
+      <div class:list={["lead-img", { contain: lead.fit === "contain" }]} style={lead.bg ? `background:${lead.bg}` : undefined}><img src={lead.img} alt="" /></div>
       <a class="lead-text" href={lead.url} target="_blank" rel="noopener">
         <div class="meta"><span class="dot">{lead.source}</span><span class="muted">{lead.date}</span></div>
         <h2>{lead.title}</h2>

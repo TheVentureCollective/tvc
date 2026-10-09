@@ -4,7 +4,11 @@ import Icon from "../components/Icon.astro";
 import site from "../data/site.js";
 import { initials, logoBox, logoSrc, delay } from "../lib/util.js";
 
-const logos = site.companies.filter((c) => c.logo);
+const rank = (c) => {
+  const i = site.marqueeFirst.indexOf(c.name);
+  return i === -1 ? site.marqueeFirst.length : i;
+};
+const logos = site.companies.filter((c) => c.logo).sort((a, b) => rank(a) - rank(b));
 const featured = site.companies.filter((c) => c.featured).sort((a, b) => a.featured - b.featured);
 const teamUrl = (m) =>
   m.url || "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(m.name + " The Venture Collective");
@@ -15,7 +19,7 @@ const teamUrl = (m) =>
   description="An early-stage venture firm backing founders transforming legacy industries: industrial, energy and AI infrastructure, healthcare and applied bio, aerospace and defense."
 >
   <section class="wrap hero">
-    <div class="eyebrow">Early-stage venture · Pre-seed to Series A</div>
+    <div class="eyebrow">Early-stage · Pre-seed to Series A</div>
     <h1 class="h1 home-h1">
       <span class="hero-line">Backing founders</span>
       <span class="hero-line">transforming <em class="hero-word" data-words={JSON.stringify(site.heroWords)}>{site.heroWords[0]}</em></span>
@@ -27,7 +31,6 @@ const teamUrl = (m) =>
         <p class="lead hero-lead">We invest our capital, time, and network into highly defensible, fast-growing companies with the potential to solve the world's biggest problems.</p>
         <div class="btns">
           <a href="/portfolio" class="btn btn-fill">Meet the portfolio</a>
-          <a href="/contact" class="btn btn-outline">Get in touch</a>
         </div>
       </div>
     </div>
@@ -164,7 +167,7 @@ const teamUrl = (m) =>
       <div>
         <div class="eyebrow">04 — Approach</div>
         <h2 class="h2">Four commitments that decide how we work<span class="dot">.</span></h2>
-        <p class="lead" style="margin-top:24px;max-width:460px">Four commitments that decide what we invest in, what we pay, and what founders get from us afterward.</p>
+        <p class="lead" style="margin-top:24px;max-width:460px">Four core principles drive what we fund, what we pay, and how we support founders post-investment.</p>
         <a href="/approach" class="text-link" style="margin-top:24px">Read the full approach ↗</a>
       </div>
       <div class="principle-list">

@@ -77,7 +77,8 @@ p { text-wrap: pretty; }
 /* Header */
 .site-header { border-bottom: 1px solid var(--line); position: relative; }
 .site-header nav { display: flex; align-items: center; justify-content: space-between; gap: 12px 32px; padding-top: 18px; padding-bottom: 18px; }
-.wordmark { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--fg); }
+.wordmark { display: inline-flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--fg); }
+.wordmark img { height: 24px; width: auto; }
 .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px clamp(16px, 2vw, 28px); font-size: 14px; font-weight: 500; }
 .nav-links a[aria-current="page"] { color: var(--accent); }
 .nav-links .nav-cta { border-bottom: 1px solid var(--line-button); padding-bottom: 2px; }
@@ -245,7 +246,6 @@ p { text-wrap: pretty; }
 .filters button { height: 34px; padding: 0 14px; border: 1px solid var(--line-input); background: transparent; color: var(--fg-filter); font-family: var(--sans); font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background .2s, color .2s, border-color .2s; }
 .filters button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--bg); }
 .filters .short { display: none; }
-.count { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); white-space: nowrap; }
 .portfolio-grid { padding-top: 40px; padding-bottom: var(--pad-y); }
 
 /* ICYMI */
@@ -254,6 +254,7 @@ p { text-wrap: pretty; }
 .lead-story { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border: 1px solid var(--line-2); }
 .lead-img { position: relative; min-height: 320px; background: var(--surface); filter: grayscale(1); overflow: hidden; }
 .lead-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lead-img.contain img { object-fit: contain; }
 .lead-text { display: flex; flex-direction: column; padding: clamp(28px, 3.5vw, 48px); color: var(--fg); transition: background .45s; }
 .lead-text:hover { background: var(--surface); color: var(--fg); }
 .meta { display: flex; gap: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
@@ -320,7 +321,6 @@ p { text-wrap: pretty; }
   .filters button { scroll-snap-align: start; }
   .filters .long { display: none; }
   .filters .short { display: inline; }
-  .count { display: none; }
 }
 @media (pointer: coarse) {
   .filters button { height: 44px; }

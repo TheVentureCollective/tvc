@@ -4,7 +4,6 @@ import site from "../data/site.js";
 import { initials, logoBox, logoSrc, delay, SHORT_SECTOR } from "../lib/util.js";
 
 const filters = ["All", ...site.sectors];
-const total = site.companies.length;
 ---
 <Base
   page="portfolio"
@@ -29,7 +28,6 @@ const total = site.companies.length;
           </button>
         ))}
       </div>
-      <div class="count" aria-live="polite">{total} companies</div>
     </div>
   </div>
 
@@ -55,17 +53,14 @@ const total = site.companies.length;
 <script>
   const buttons = [...document.querySelectorAll(".filters button")];
   const cards = [...document.querySelectorAll(".portfolio-grid .card")];
-  const count = document.querySelector(".count");
 
   buttons.forEach((b) => b.addEventListener("click", () => {
     const sector = b.dataset.sector;
     buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    let n = 0;
     cards.forEach((c) => {
       const show = sector === "All" || c.dataset.sector === sector;
       c.hidden = !show;
-      if (show) { n++; c.style.opacity = "1"; c.style.transform = "none"; }
+      if (show) { c.style.opacity = "1"; c.style.transform = "none"; }
     });
-    count.textContent = n + (n === 1 ? " company" : " companies");
   }));
 </script>

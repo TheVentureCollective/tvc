@@ -1,5 +1,6 @@
 // TVC site content. Edit entries here; every page reads from this file.
 // Logos live in public/assets/logos/white/<logo>.png (white on transparent). ratio = width / height of that file.
+// sector: one of the "sectors" below, or "" to show the company under All only.
 // featured: position in the Home portfolio snapshot (1-8). short / homeTag: Home-only overrides.
 // team photo: file in public/assets/team/, or "" to show an initials monogram.
 export default {
@@ -16,6 +17,21 @@ export default {
     "Energy & AI Infrastructure",
     "Healthcare & Applied Bio",
     "Aerospace, Defense & Critical Materials"
+  ],
+  // Logos shown first in the Home logo reel, in this order. Every other company with a logo follows.
+  "marqueeFirst": [
+    "Orbem",
+    "Unnatural Products",
+    "Wonderbelly",
+    "Gravitics",
+    "coding.bio",
+    "Liferaft",
+    "Phasic Energy",
+    "Terrion",
+    "Axiom Space",
+    "Fluidstack",
+    "Life Biosciences",
+    "Universal Quantum"
   ],
   "companies": [
     {
@@ -446,17 +462,8 @@ export default {
       "ratio": 10.17,
       "desc": "Comprehensive pediatric care, just a text away.",
       "sector": "Healthcare & Applied Bio",
-      "tag": "",
-      "url": "https://www.summerhealth.com/"
-    },
-    {
-      "name": "Caraway",
-      "logo": "caraway",
-      "ratio": 4.8,
-      "desc": "Mental, physical, and reproductive health services and support for Gen Z.",
-      "sector": "Healthcare & Applied Bio",
       "tag": "Exit",
-      "url": "https://www.summerhealth.com/blog/caraway-health"
+      "url": "https://www.summerhealth.com/"
     },
     {
       "name": "SPARK Neuro",
@@ -511,6 +518,60 @@ export default {
       "sector": "Healthcare & Applied Bio",
       "tag": "",
       "url": "https://www.redqueen.bio/"
+    },
+    {
+      "name": "Eterna Regeneratives",
+      "logo": "eterna",
+      "ratio": 1.93,
+      "desc": "Regenerative biomaterials that use keratin to repair tooth enamel and bone.",
+      "sector": "Healthcare & Applied Bio",
+      "tag": "",
+      "url": "https://eternaregeneratives.co"
+    },
+    {
+      "name": "Speak_",
+      "logo": "speak",
+      "ratio": 1.0,
+      "desc": "A video interview platform that helps recruiters find real, qualified candidates fast.",
+      "sector": "",
+      "tag": "",
+      "url": "https://speak.careers"
+    },
+    {
+      "name": "Lopay",
+      "logo": "lopay",
+      "ratio": 2.68,
+      "desc": "A payment app and point-of-sale system that lets small businesses take card payments for less.",
+      "sector": "",
+      "tag": "",
+      "url": "https://lopay.com"
+    },
+    {
+      "name": "Qloo",
+      "logo": "qloo",
+      "ratio": 2.29,
+      "desc": "AI that predicts consumer taste across music, film, food, and travel.",
+      "sector": "",
+      "tag": "",
+      "url": "https://www.qloo.com"
+    },
+    {
+      "name": "SNAFU",
+      "logo": "snafu",
+      "ratio": 2.58,
+      "desc": "Data-driven growth capital and marketing for music artists, labels, and distributors.",
+      "sector": "",
+      "tag": "",
+      "url": "https://snafurecords.com"
+    },
+    {
+      "name": "Ellevest",
+      "logo": "ellevest",
+      "ratio": 4.53,
+      "desc": "Wealth management and financial planning built for women.",
+      "sector": "",
+      "tag": "",
+      "url": "https://www.ellevest.com"
     }
   ],
   "team": [
@@ -540,8 +601,8 @@ export default {
       "photo": "cat-2.jpg",
       "bio": [
         "Partner, Primary Venture Partners",
-        "Member, All Raise",
-        "Early-Stage Software Operator"
+        "Early Stage Software Operator",
+        "Member, All Raise"
       ]
     },
     {
@@ -591,9 +652,9 @@ export default {
       "role": "Chairman",
       "photo": "lld.jpeg",
       "bio": [
+        "Chief Growth Officer, Sela",
         "Managing Director, Sir Elton John and David Furnish's Global Private Office",
-        "COO, Rocket Entertainment Group",
-        "Advisor, MetroBank"
+        "COO, Rocket Entertainment Group"
       ]
     },
     {
@@ -661,7 +722,7 @@ export default {
     },
     {
       "label": "Healthcare under pressure",
-      "body": "Healthcare can no longer run on more people and more patents. $200–300B in drug revenue expires by 2030, and the country will be short 187,000 physicians to replace it. The industry has to get more efficient, not just bigger."
+      "body": "Healthcare can no longer run on more people and more patents. $200-300B in drug revenue expires by 2030, and the country will be short 187,000 physicians to replace it."
     },
     {
       "label": "Capital gap",
@@ -693,7 +754,7 @@ export default {
       "num": "01",
       "icon": "factory",
       "title": "Industrial & Advanced Manufacturing",
-      "body": "New factories are being announced faster than anyone can staff them. The 2.1M-worker gap closes with robots on the floor, not new hires.",
+      "body": "AI-powered machines are stepping in to fill a 2.1 million worker shortage, helping bring manufacturing home.",
       "companies": [
         "Orbem",
         "Mach",
@@ -718,9 +779,10 @@ export default {
       "title": "Healthcare & Applied Bio",
       "body": "Every part of the system is short-staffed at once — physicians, nurses, and the pipelines meant to replace expiring drugs. Software and AI are the only lever that scales faster than hiring ever could.",
       "companies": [
-        "Life Biosciences",
         "Unnatural Products",
         "Red Queen Bio",
+        "Life Biosciences",
+        "coding.bio",
         "HelixNano"
       ]
     },
@@ -728,7 +790,7 @@ export default {
       "num": "04",
       "icon": "shield",
       "title": "Aerospace, Defense & Critical Materials",
-      "body": "Decades of outsourcing left the West without the materials, launch capacity, and supply chains it now needs on its own soil. Rebuilding them is the next decade's industrial project.",
+      "body": "Re-establishing the materials, supply chains, and launch capacity lost to decades of outsourcing will be the defining industrial project of the next ten years.",
       "companies": [
         "Axiom Space",
         "Terrion",
@@ -747,7 +809,7 @@ export default {
     {
       "num": "02",
       "title": "We diagnose before we prescribe.",
-      "short": "Platform programs solve for the average company, and no company is average. We work out the two or three things that decide your next eighteen months, and put named people against each.",
+      "short": "Platform programs solve for the average company, and no company is average. We work out the two or three things that decide your next eighteen months, and deploy a dedicated deal team against it.",
       "body": "Platform programs solve for the average company, and no company is average. We work out which two or three things will actually determine your next eighteen months, then put named people against each one — and stay out of the way everywhere else.",
       "proof": "A support plan per company, revisited regularly"
     },
@@ -776,7 +838,7 @@ export default {
     {
       "num": "02",
       "title": "Customers",
-      "body": "Access to the incumbents that decide whether a market opens."
+      "body": "Go-to market guidance and access to key customers."
     },
     {
       "num": "03",
@@ -824,7 +886,7 @@ export default {
     {
       "when": "Week 1",
       "title": "Deep Dive",
-      "body": "Not a pass through the data room. We work to understand the business properly — where the real risk sits, and which parts of it we are willing to underwrite — with the specialists from our network in the room."
+      "body": "Not a pass through the data room. We work to understand the business properly — where the real risk sits, and which parts of it we are willing to underwrite — with the experts from our network in the room."
     },
     {
       "when": "Week 2",
@@ -862,21 +924,52 @@ export default {
       "url": "https://www.lifebiosciences.com/life-biosciences-announces-first-patient-dosed-in-phase-1-trial-of-er-100-for-optic-neuropathies/"
     }
   ],
+  // ICYMI page: the big story at the top. Kept on Power100 on purpose; newer stories go in "news" below.
   "lead": {
-    "source": "TS2",
-    "date": "Aug 2026",
-    "img": "/assets/news/xenergy-billboard.webp",
-    "title": "Amazon-backed X-Energy's $1 billion IPO puts nuclear power back in the AI spotlight",
-    "body": "X-Energy raised roughly $1 billion in its Nasdaq IPO under the ticker XE, pricing well above its initial range as investors back small modular reactor technology to meet surging AI and data-center energy demand.",
-    "url": "https://ts2.tech/en/amazon-backed-x-energys-1-billion-ipo-puts-nuclear-power-back-in-the-ai-spotlight/"
+    "source": "LinkedIn",
+    "date": "Mar 2026",
+    "img": "/assets/news/power100.jpeg",
+    "fit": "contain",
+    "bg": "#FFFFFF",
+    "title": "TVC named a 2026 Power100 Asset Manager",
+    "body": "Blueprint Capital Advisors recognized The Venture Collective among its 2026 Power100 Asset Managers honorees.",
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7437842675678199808"
   },
   "news": [
+    {
+      "date": "Sep 2026",
+      "source": "Sky News",
+      "title": "Early Deliveroo backer invests in tooth enamel regeneration startup",
+      "body": "Hoxton Ventures co-leads a $4M seed round for Eterna Regeneratives, a King's College London spinout regrowing tooth enamel, with The Venture Collective also backing.",
+      "url": "https://news.sky.com/story/early-deliveroo-backer-invests-in-tooth-enamel-regeneration-startup-13588463"
+    },
+    {
+      "date": "Aug 2026",
+      "source": "TS2",
+      "title": "Amazon-backed X-Energy's $1 billion IPO puts nuclear power back in the AI spotlight",
+      "body": "X-Energy raised roughly $1 billion in its Nasdaq IPO under the ticker XE, pricing well above its initial range.",
+      "url": "https://ts2.tech/en/amazon-backed-x-energys-1-billion-ipo-puts-nuclear-power-back-in-the-ai-spotlight/"
+    },
+    {
+      "date": "2026",
+      "source": "WSJ Pro",
+      "title": "Emerging venture managers have a secret weapon: co-investing with LPs",
+      "body": "How newer venture firms are bringing their own investors into deals alongside them.",
+      "url": "https://www.wsj.com/pro/venture-capital/emerging-venture-managers-have-a-secret-weapon-co-investing-with-lps-009e4acd"
+    },
     {
       "date": "Jun 2026",
       "source": "Life Biosciences",
       "title": "First patient dosed in Phase 1 trial of ER-100",
       "body": "Dosing began in the Phase 1 study of ER-100 for optic neuropathies.",
       "url": "https://www.lifebiosciences.com/life-biosciences-announces-first-patient-dosed-in-phase-1-trial-of-er-100-for-optic-neuropathies/"
+    },
+    {
+      "date": "May 2026",
+      "source": "BeautyMatter",
+      "title": "Once bitten: Mimikai bug repellent takes on DEET",
+      "body": "Mimikai launches the first new EPA-approved insect repellent ingredient in 25 years, derived from wild tomatoes and as effective as DEET.",
+      "url": "https://beautymatter.com/articles/mimikai-bug-repellent-takes-on-deet"
     },
     {
       "date": "May 2026",
@@ -912,13 +1005,6 @@ export default {
       "title": "Scaling toward a million-qubit machine",
       "body": "A modular trapped-ion architecture targeting fault-tolerant scale.",
       "url": "https://universalquantum.com/"
-    },
-    {
-      "date": "Mar 2026",
-      "source": "LinkedIn",
-      "title": "TVC named a 2026 Power100 Asset Manager",
-      "body": "Blueprint Capital Advisors recognized The Venture Collective among its 2026 Power100 Asset Managers honorees.",
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7437842675678199808"
     },
     {
       "date": "Feb 2026",
