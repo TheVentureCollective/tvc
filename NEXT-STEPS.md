@@ -1,13 +1,13 @@
 # TVC site: status and next steps
 
-Last updated: 6 Oct 2026
+Last updated: 8 Oct 2026
 
 Key dates: all content in by **Fri 3 Oct**, launch **Fri 10 Oct**, handover to Cat Middleton **Mon 13 Oct**.
 
 ## Picking this up on another laptop
 
 ```bash
-git clone https://github.com/ellebythesea/tvc.git
+git clone https://github.com/TheVentureCollective/tvc.git
 cd tvc
 npm install
 npm run dev
@@ -17,7 +17,7 @@ The site runs at http://localhost:4321. To continue with Claude Code, open it in
 
 ## Done
 
-- Private repo `ellebythesea/tvc` (Lisa's personal GitHub, to be transferred to TVC at handover).
+- Repo moved to TVC's GitHub on 8 Oct: https://github.com/TheVentureCollective/tvc. It's public so Netlify's Personal plan can build it (Personal can't build private repos owned by an organization). To make it private, TVC moves the Netlify team to Pro ($20/month) first.
 - Netlify account on Lisa's GitHub login (default team: 21 Robots, not used for TVC).
 - Netlify team "The Venture Collective" (Personal plan, Lisa's card). Project `theventurecollective`, live preview at https://theventurecollective.netlify.app. Deploys automatically on every push to `main`. Form detection is on. Builds are skipped when a push only changes notes or `docs/` (saves credits).
 - Astro site with all five pages: `/`, `/approach`, `/portfolio`, `/icymi`, `/contact`. Checked side by side against the design reference at desktop and phone width.
@@ -41,7 +41,7 @@ What the domain uses today (checked 1 Oct):
 ### 1. Now: build on Lisa's accounts
 1. ~~Netlify: create a team called "The Venture Collective" on the Personal plan ($9/month), on Lisa's card.~~ Done 1 Oct. (A second team can't be on the free plan.)
 2. ~~Import `ellebythesea/tvc` into that team.~~ Done 1 Oct.
-3. ~~Form notifications~~ Done 1 Oct: Forms > Submission notifications emails 21robots@gmail.com (subject "TVC site: new contact form message"). Switch to hello@theventurecollective.com at launch.
+3. ~~Form notifications~~ Done 1 Oct: Forms > Submission notifications email Lisa (subject "TVC site: new contact form message"). Switch to hello@theventurecollective.com at launch.
 4. Share the `*.netlify.app` preview link with Cat for review.
 5. Test on real phones: iOS Safari and Android Chrome at 375px and 390px width (handoff requirement).
 
@@ -56,13 +56,13 @@ What the domain uses today (checked 1 Oct):
 11. Switch form notifications to hello@theventurecollective.com.
 
 ### 4. Handover, Mon 13 Oct
-12. GitHub: transfer the repo from `ellebythesea/tvc` to the TheVentureCollective organization (Settings > Danger Zone > Transfer).
-13. Netlify: reconnect the project to the repo's new location (Project configuration > Build & deploy > Repository). Approve Netlify's access to the TVC organization while Lisa is still an Owner there.
+12. ~~GitHub: transfer the repo to the TheVentureCollective organization.~~ Done 8 Oct, made public.
+13. Netlify: reconnect the project to the repo's new location (Project configuration > Build & deploy > Repository > Manage repository > Link to a different repository). Approve Netlify's access to the TVC organization for the `tvc` repo only.
 14. Netlify team:
     - Invite Cat as Owner. If the Personal plan won't allow a second member, upgrade to Pro ($20) for the handover; Netlify only lets an Owner leave once another Owner exists.
     - Cat replaces Lisa's card under billing.
     - Lisa leaves the team.
-    - Cat can move back to Personal afterwards. **But** Netlify lists "Private organization repos" as a Pro feature: once the repo is a private repo in TVC's GitHub organization, Personal may not build it. Either stay on Pro or make the repo public (harmless for a marketing site; everything in it is already public on the website).
+    - Cat can move back to Personal afterwards. The repo is public, so Personal builds it. If TVC wants the repo private, they need Pro.
 15. Lisa leaves the Cloudflare account and the GitHub organization.
 
 **Cost to Lisa:** about $9 for October, plus a few prorated dollars if Pro is needed for the handover. After that, nothing.
@@ -75,12 +75,3 @@ What the domain uses today (checked 1 Oct):
 - **The Cloudflare invite** above (GitHub done 6 Oct).
 - Open copy approvals in `docs/design_handoff_tvc_site/Sign-off list.md`.
 - Whether to use the two group photos (removed from the site build; originals are in `docs/`).
-
-## Short email for Cat
-
-> Hi Cat,
->
-> Quick note: to keep us on schedule, I've set up the website's code in my account for now. I'll move it over to TVC when I hand off the site on 13 Oct. There's nothing you need to do, and I'll let you know if I need anything.
->
-> Thanks,
-> Lisa
