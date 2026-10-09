@@ -744,11 +744,11 @@ export default {
       "label": "In biopharma M&A in Q1 2026 alone, including seven $1B+ deals in 12 days"
     },
     {
-      "value": "$113B",
-      "label": "Spent on billion-dollar-plus startup acquisitions in Q2 2026 alone"
+      "value": "5",
+      "label": "Deep tech and energy companies raised $1B+ in 2026 listings, including Cerebras Systems, Quantinuum, Fervo Energy and TVC portfolio company X-Energy"
     }
   ],
-  "statsSources": "Crunchbase News, H1 2026 · BioPharma Dive venture tracker, H1 2026 · J.P. Morgan/DealForma via BioPharma Dive, Q1 2026 · Crunchbase startup M&A data, Q2 2026.",
+  "statsSources": "Crunchbase News, H1 2026 · BioPharma Dive venture tracker, H1 2026 · J.P. Morgan/DealForma via BioPharma Dive, Q1 2026 · Company IPO pricing announcements, 2026.",
   "industries": [
     {
       "num": "01",
