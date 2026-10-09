@@ -57,7 +57,7 @@ What the domain uses today (checked 1 Oct):
 
 ### 4. Handover, Mon 13 Oct
 12. ~~GitHub: transfer the repo to the TheVentureCollective organization.~~ Done 8 Oct, made public.
-13. Netlify: reconnect the project to the repo's new location (Project configuration > Build & deploy > Repository > Manage repository > Link to a different repository). Approve Netlify's access to the TVC organization for the `tvc` repo only.
+13. ~~Netlify: reconnect the project to the repo's new location.~~ Done 8 Oct. The Netlify GitHub app is installed on TheVentureCollective with access to `tvc` only.
 14. Netlify team:
     - Invite Cat as Owner. If the Personal plan won't allow a second member, upgrade to Pro ($20) for the handover; Netlify only lets an Owner leave once another Owner exists.
     - Cat replaces Lisa's card under billing.
