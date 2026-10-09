@@ -104,7 +104,7 @@ const teamUrl = (m) =>
           <div class="invest-index">
             {site.industries.map((ind, i) => (
               <button type="button" data-jump={i} class={i === 0 ? "active" : undefined}>
-                <span class="num">{ind.num}</span>
+                <span class="num"><Icon name={ind.icon} size={20} /></span>
                 <span class="title">{ind.title}</span>
                 <span class="mark"></span>
               </button>
@@ -115,7 +115,6 @@ const teamUrl = (m) =>
           {site.industries.map((ind, i) => (
             <div class:list={["panel", { active: i === 0 }]} data-panel={i}>
               <div class="panel-head">
-                <div class="eyebrow">{ind.num}</div>
                 <Icon name={ind.icon} size={28} />
               </div>
               <h3>{ind.title}</h3>
@@ -139,7 +138,6 @@ const teamUrl = (m) =>
           {site.industries.map((ind, i) => (
             <div class:list={["acc", { open: i === 0 }]}>
               <button type="button" class="acc-head" aria-expanded={i === 0 ? "true" : "false"}>
-                <span class="num">{ind.num}</span>
                 <span class="icon"><Icon name={ind.icon} size={22} /></span>
                 <span class="title">{ind.title}</span>
                 <span class="tag">Active</span>

@@ -676,7 +676,7 @@ export default {
     },
     {
       "name": "Jamie Cox",
-      "bio": "Fluidstack",
+      "bio": "Co-Founder & Chief Strategy Officer, Fluidstack · Thiel Fellow · Multi-Time Founder",
       "url": "https://www.linkedin.com/company/fluidstack"
     },
     {
@@ -710,9 +710,9 @@ export default {
       "url": "https://www.linkedin.com/in/sanjivsanghavi/"
     },
     {
-      "name": "Michael Koeris",
-      "bio": "DARPA",
-      "url": "https://www.darpa.mil/"
+      "name": "Pradeep Bandaru",
+      "bio": "Head of Platforms & AI Workflows, Sanofi · Former Data Scientist, Palantir Technologies",
+      "url": "https://www.linkedin.com/search/results/people/?keywords=Pradeep%20Bandaru%20Sanofi"
     }
   ],
   "points": [
@@ -951,7 +951,7 @@ export default {
       "url": "https://ts2.tech/en/amazon-backed-x-energys-1-billion-ipo-puts-nuclear-power-back-in-the-ai-spotlight/"
     },
     {
-      "date": "2026",
+      "date": "Aug 2026",
       "source": "WSJ Pro",
       "title": "Emerging venture managers have a secret weapon: co-investing with LPs",
       "body": "How newer venture firms are bringing their own investors into deals alongside them.",
